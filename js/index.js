@@ -139,7 +139,9 @@ class Index {
 
     startCounterAnimation() {
         const valueDisplays = document.querySelectorAll('.index__numbers-main');
-    
+        const icon = document.querySelectorAll('.index__number-icon')
+        const img = document.querySelector('.index__benefit-img')
+
         function animateValue(element, start, end, duration) {
             let current = start;
             const range = end - start;
@@ -162,8 +164,15 @@ class Index {
                     const startValue = 0;
                     const endValue = parseInt(valueDisplay.getAttribute('data-val'));
                     const duration = 2000;
-                    animateValue(valueDisplay, startValue, endValue, duration);
-                    observer.unobserve(valueDisplay);
+
+                    icon.forEach( icon => {
+                        icon.classList.add('active')
+                        }
+                    )
+                    img.classList.add('active')
+                    
+                    animateValue(valueDisplay, startValue, endValue, duration, icon, img);
+                    observer.unobserve(valueDisplay, icon, img);
                 }
             });
         }

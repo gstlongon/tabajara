@@ -6,7 +6,12 @@
 
 body {
     color: #535252;
+    background: linear-gradient(to bottom, #ffffff, #fbffce, #fffff4 );
     font-family: 'Poppins', sans-serif;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+    overflow-x: hidden;
 }
 
 a {
@@ -30,6 +35,24 @@ ul {
     50%  {transform: translate(-50%,-35%);}
     100% {transform: translate(-50%,0%);}
   }
+
+@keyframes draw {
+    0% {
+        stroke-dashoffset: 1000;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes mrtabajara {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
 
 
 /* =================header============== */
@@ -130,7 +153,6 @@ ul {
 .index__pedidos {
     width: 100%;
     height: auto;
-    background: linear-gradient(to bottom, #f0f0f0, #FFF );
     position: relative;
 }
 
@@ -152,7 +174,7 @@ ul {
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    background: linear-gradient(to right, #ce1a1a, #ff3434, #f51313, #d8b801, #abb801, #aaa700);
+    background: linear-gradient(to right, #f51313, #f51313, #f51313, #007d2d, #007d2d, #007d2d);
     background-size: 230% 100%;
     background-position: 0 0;
     border: none;
@@ -171,7 +193,7 @@ ul {
     background-position: 100% 0;
 }
 
-.index__pedidos-title {
+.index__title {
     width: 100%;
     height: auto;
     color: #ff3131;
@@ -186,29 +208,30 @@ ul {
 .index__pratos-area,
 .index__sobremesa-area {
     width: 100%;
-    height: auto;
+    height: 0;
+    opacity: 0;
     max-width: 1200px;
-    display:grid;
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
-    opacity: 0;
     position: absolute;
     pointer-events: none;
     left: 50%;
-    transform: translate(-50%,40%);
-    transition: .4s;
-
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: height 0s, opacity 0s, transform cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.4s;
 }
 
 .index__pizza-area.active,
 .index__burguer-area.active,
 .index__pratos-area.active,
 .index__sobremesa-area.active {
+    height: auto;
     opacity: 1;
-    transform: translate(-50%,0%);
+    transform: translate(-50%, 0);
     pointer-events: all;
     position: relative;
-
+    z-index: 1;
 }
 
 .index__pizza-item,
@@ -288,7 +311,7 @@ ul {
     height:40px;
     line-height:40px;
     border-radius: 5px;
-    background: linear-gradient(to right, #ce1a1a, #ff3434, #f51313, #ff1919, #d30000, #b80000);
+    background: linear-gradient(to right, #f51313, #f51313, #f51313, #007d2d, #007d2d, #007d2d);
     background-size: 230% 100%;
     background-position: 0 0;
     text-align:center;
@@ -333,6 +356,114 @@ ul {
     color:#555;
     margin-top:10px;
 }
+
+.index__counter {
+    width: 100%;
+    height: auto;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.index__numbers-data {
+    width: 220px;
+    display: flex;
+    color: #f51313;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.index__number-icon {
+    position: absolute;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.index__number-icon.active {
+    opacity: 1;
+}
+
+.index__number-icon.active path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 5s ease-in forwards;
+    fill: transparent;
+    stroke: #007d2d;
+    stroke-width: 2;
+}
+.index__numbers-main {
+    font-size: 70px;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+.index__numbers-text {
+    margin-bottom: 20px;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+}
+
+.index__benefit {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.index__benefit-box {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    padding: 30px;
+    margin: 40px auto 0px;
+    background-color: #FFF;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 10px;
+    box-shadow: 0px 0px 12px -3px rgba(0,0,0,0.4);
+}
+
+.index__benefit-item {
+    width: 280px;
+    height: auto;
+    margin: 0 auto 15px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.index__benefit-icon {
+    margin-right: 10px;
+}
+
+.index__benefit-icon path {
+    fill: #007d2d;
+}
+
+.index__benefit-text {
+    font-weight: bold;
+    color: #f51313;
+    font-size: 18px;
+}
+
+.index__benefit-img {
+    position: absolute;
+    top: 50%;
+    left: -5%;
+    transform: rotate(-25deg);
+    z-index: -1;
+}
+
+.index__benefit-img.active {
+    animation: mrtabajara 2s ease-in-out infinite;
+}
+
+
 
 
 

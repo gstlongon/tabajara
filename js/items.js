@@ -7,6 +7,7 @@ let pizzaJson = [
     {id:6, name:'Moda da Casa', sale: true, img:'img/pizza6.png',category:"pizza", price:35.00, sizes:['320g', '530g', '860g'], description:'Molho de tomate, mussarela, carne de sol, tomates em cubos, coentro, cebola, azeitona, catupiry e orégano'},
     {id:7, name:'Banana com canela', sale: false, img:'img/pizza7.png',category:"pizza", price:32.00, sizes:['320g', '530g', '860g'], description:'Mussarela, banana, canela e açúcar'},
     {id:8, name:'Chocolate com morango', sale: true, img:'img/pizza8.png',category:"pizza", price:35.00, sizes:['320g', '530g', '860g'], description:'Creme de leite, lascas de chocolate e morangos'}
+    
 ];
 
 let burguerJson = [
