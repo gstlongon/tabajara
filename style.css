@@ -421,7 +421,7 @@ ul {
     max-width: 800px;
     padding: 30px;
     margin: 40px auto 0px;
-    background-color: #FFF;
+    background-color: rgba(255, 255, 255, .5);
     display: grid;
     grid-template-columns: 1fr 1fr;
     border-radius: 10px;
@@ -447,7 +447,7 @@ ul {
 
 .index__benefit-text {
     font-weight: bold;
-    color: #f51313;
+    color: #797979;
     font-size: 18px;
 }
 
@@ -455,7 +455,6 @@ ul {
     position: absolute;
     top: 50%;
     left: -5%;
-    transform: rotate(-25deg);
     z-index: -1;
 }
 
