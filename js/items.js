@@ -27,3 +27,12 @@ let pratosJson = [
     {id:5, name:'Prato Peruano', sale: false, img:'img/prato5.png',category:"prato", price:29.00, description:'Arroz Temperado, Salada, Feijao Peruano e Camarão'},
     {id:6, name:'Prato de Ceviche Atum', sale: true, img:'img/prato6.png',category:"prato", price:35.00, description:'Ceviche Atum com tempero Peruano'},
 ];
+
+let sobremesasJson = [
+    { id: 1, name: 'Milkshake de Morango', sale: false, img: 'img/milkmorango.png', category: "sobremesas", price: 23.99, description: 'Sorvete de morango, leite, calda de morango, morangos.' },
+    { id: 2, name: 'Milkshake de Chocolate', sale: false, img: 'img/milkchocolate.png', category: "sobremesas", price: 23.99, description: 'Sorvete de chocolate, leite, calda de brigadeiro, Nutella®.' },
+    { id: 3, name: 'Milkshake de Caramelo', sale: false, img: 'img/milkcaramelo.png', category: "sobremesas", price: 23.99, description: 'Sorvete de caramelo, leite, calda de caramelo, doce de leite.' },
+    { id: 4, name: 'Pettit Gâteau', sale: true, img: 'img/petitgateau.png', category: "sobremesas", price: 25.00, description: 'Petit Gâteau com calda de Nutella®, acompanha morangos,avelãs granuladas e sorvete de vanilla.' },
+    { id: 5, name: 'Cheesecake Frutas Vermelhas', sale: false, img: 'img/cheesecake.png', category: "sobremesas", price: 32.00, description: 'Cheesecake recheado de frutas vermelhas, coberto com ganache de chocolate branco e calda de morango.' },
+    { id: 6, name: 'Coupe Chocolat', sale: false, img: 'img/coupechocolate.png', category: "sobremesas", price: 38.00, description: 'Recheio de creme de pavê de chocolate branco, mesclado com avelãs granuladas, cobertura de calda de ganache de chocolate meio amargo, leite Ninho® em pó e leite condensado.' }
+]

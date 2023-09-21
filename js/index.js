@@ -27,11 +27,11 @@ class Index {
     filter() {
         const areaPizza = document.querySelector('.index__pizza-area')
         const areaLanche = document.querySelector('.index__burguer-area')
-        const areaSobremesa = document.querySelector('.index__sobremesa-area')
+        const areaSobremesa = document.querySelector('.index__sobremesas-area')
         const areaPratos = document.querySelector('.index__pratos-area')
         const btnPizza = document.querySelector('.index__btn-pizza')
         const btnLanche = document.querySelector('.index__btn-lanche')
-        const btnSobremesa = document.querySelector('.index__btn-sobremesa')
+        const btnSobremesa = document.querySelector('.index__btn-sobremesas')
         const btnPratos = document.querySelector('.index__btn-pratos')
 
 
@@ -137,6 +137,25 @@ class Index {
         
     }
 
+    sobremesas() {
+        sobremesasJson.forEach((item, index ) => {
+            let sobremesasItem = document.querySelector('.index__model .index__sobremesas-item').cloneNode(true)
+            document.querySelector('.index__sobremesas-area').append(sobremesasItem)
+        
+            sobremesasItem.querySelector('.index__sobremesas-item--img img').src = item.img
+            sobremesasItem.querySelector('.index__sobremesas-item--price').innerHTML = `R$ ${item.price.toFixed(2)}`
+            sobremesasItem.querySelector('.index__sobremesas-item--name').innerHTML = item.name
+            sobremesasItem.querySelector('.index__sobremesas-item--desc').innerHTML = item.description
+
+            if (item.sale === true) {
+                const sale = sobremesasItem.querySelector('.index__sobremesas-item .index__sale')
+                sale.classList.add('active')
+            }
+        
+        })
+        
+    }
+
     startCounterAnimation() {
         const valueDisplays = document.querySelectorAll('.index__numbers-main');
         const icon = document.querySelectorAll('.index__number-icon')
@@ -202,6 +221,7 @@ class Index {
         this.pizza()
         this.burguer()
         this.pratos()
+        this.sobremesas()
         this.startCounterAnimation()
 
         console.log('hello')
