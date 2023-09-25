@@ -36,3 +36,23 @@ let sobremesasJson = [
     { id: 5, name: 'Cheesecake Frutas Vermelhas', sale: false, img: 'img/cheesecake.png', category: "sobremesas", price: 32.00, description: 'Cheesecake recheado de frutas vermelhas, coberto com ganache de chocolate branco e calda de morango.' },
     { id: 6, name: 'Coupe Chocolat', sale: false, img: 'img/coupechocolate.png', category: "sobremesas", price: 38.00, description: 'Recheio de creme de pavê de chocolate branco, mesclado com avelãs granuladas, cobertura de calda de ganache de chocolate meio amargo, leite Ninho® em pó e leite condensado.' }
 ]
+
+let bebidasJson = [
+    {id:1, name:'Garrafa de Água ', sale: false, img:'img/imagem.png',category:"Bebidas", price:3.99, description:'Água sem gás - 500 ml.'},
+    {id:2, name:'Cerveja long neck Heineken', sale: false, img:'img/imagem2.png',category:"Bebidas", price:7.99, description:'Cerveja long neck Heineken - 350 ml .'},
+    {id:3, name:'Cerveja lata Brahma', sale: false, img:'img/imagem3.png',category:"Bebidas", price:5.99, description:'Cerveja lata Brahma - 350 ml.'},
+    {id:4, name:'Cerveja lata Skol', sale: true, img:'img/imagem4.png',category:"Bebidas", price:5.99, description:'Cerveja lata Skol - 350 ml.'},
+    {id:5, name:'Cerveja long neck Stella Artois', sale: false, img:'img/imagem5.png',category:"Bebidas", price:6.99, description:'Cerveja long Stella Artois - 350 ml.'},
+    {id:6, name:'Coca Cola 2L', sale: false, img:'img/imagem6.png',category:"Bebidas", price:12.00, description:'Refrigerante Coca Cola 2L.'},
+    {id:7, name:'Coca Cola 600ml', sale: false, img:'img/imagem7.png',category:"Bebidas", price:8.00, description:'Refrigerante Coca Cola - 600ml.'},
+    {id:8, name:'Coca Cola lata', sale: false, img:'img/imagem8.png',category:"Bebidas", price:5.00, description:'Refrigerante Coca Cola lata - 350ml.'},
+    {id:9, name:'Fanta 2L', sale: false, img:'img/imagem9.png',category:"Bebidas", price:12.00, description:'Refrigerante Fanta 2L.'},
+    {id:10, name:'Fanta 600', sale: false, img:'img/imagem10.png',category:"Bebidas", price:8.00, description:'Refrigerante Fanta - 600ml.'},
+    {id:11, name:'Fanta lata', sale: false, img:'img/imagem11.png',category:"Bebidas", price:5.00, description:'Refrigerante Fanta lata - 350ml.'},
+    {id:12, name:'Sprite 2L', sale: false, img:'img/imagem12.png',category:"Bebidas", price:12.00, description:'Refrigerante Sprite 2L.'},
+    {id:13, name:'Sprite 600', sale: false, img:'img/imagem13.png',category:"Bebidas", price:8.00, description:'Refrigerante Sprite - 600ml.'},
+    {id:14, name:'Sprite lata', sale: false, img:'img/imagem14.png',category:"Bebidas", price:5.00, description:'Refrigerante Sprite lata - 350ml.'},
+    {id:15, name:'Suco de laranja', sale: false, img:'img/imagem15.png',category:"Bebidas", price:8.00, description:'Suco natural de laranja - 400ml.'},
+    {id:16, name:'Suco de Morango', sale: false, img:'img/imagem16.png',category:"Bebidas", price:8.00, description:'Suco natural de morango - 400ml.'},
+    {id:17, name:'Taubaiana 2L', sale: false, img:'img/imagem17.png',category:"Bebidas", price:12.00, description:'Refrigerante Taubaiana 2L.'}
+]

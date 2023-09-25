@@ -8,6 +8,33 @@ class Index {
         this.init()
     }
 
+
+    openMenu() {
+        const navOpen = document.querySelectorAll('.nav__open')
+        const menu = document.querySelector('.nav__menu')
+        const navClose = document.querySelectorAll('.nav__close')
+        const navBtn = document.querySelectorAll('.nav__btn')
+
+        navOpen.forEach(btn => {
+            btn.addEventListener('click', () => {
+                menu.classList.add('active')
+            })
+        })
+
+        navClose.forEach(btn => {
+            btn.addEventListener('click', () => {
+                menu.classList.remove('active')
+            })
+        })
+
+
+        navBtn.forEach(btn => {
+            btn.addEventListener('click', () => {
+                menu.classList.remove('active')
+            })
+        })
+    }
+
     indexSwiper() {
         const swiper = new Swiper('.swiper', {
             direction: 'horizontal',
@@ -38,10 +65,14 @@ class Index {
         const areaLanche = document.querySelector('.index__burguer-area')
         const areaSobremesa = document.querySelector('.index__sobremesas-area')
         const areaPratos = document.querySelector('.index__pratos-area')
+        const areaBebidas = document.querySelector('.index__bebidas-area')
+
         const btnPizza = document.querySelector('.index__btn-pizza')
         const btnLanche = document.querySelector('.index__btn-lanche')
         const btnSobremesa = document.querySelector('.index__btn-sobremesas')
         const btnPratos = document.querySelector('.index__btn-pratos')
+        const btnBebidas = document.querySelector('.index__btn-bebidas')
+
 
 
         btnPizza.addEventListener('click', () => {
@@ -49,10 +80,14 @@ class Index {
             areaLanche.classList.remove('active')
             areaSobremesa.classList.remove('active')
             areaPratos.classList.remove('active')
+            areaBebidas.classList.remove('active')
+
             btnPizza.classList.add('active')
             btnLanche.classList.remove('active')
             btnSobremesa.classList.remove('active')
             btnPratos.classList.remove('active')
+            btnBebidas.classList.remove('active')
+
         })
 
         btnLanche.addEventListener('click', () => {
@@ -60,10 +95,14 @@ class Index {
             areaLanche.classList.add('active')
             areaSobremesa.classList.remove('active')
             areaPratos.classList.remove('active')
+            areaBebidas.classList.remove('active')
+
             btnPizza.classList.remove('active')
             btnLanche.classList.add('active')
             btnSobremesa.classList.remove('active')
             btnPratos.classList.remove('active')
+            btnBebidas.classList.remove('active')
+
         })
 
         btnSobremesa.addEventListener('click', () => {
@@ -71,10 +110,14 @@ class Index {
             areaLanche.classList.remove('active')
             areaSobremesa.classList.add('active')
             areaPratos.classList.remove('active')
+            areaBebidas.classList.remove('active')
+
             btnPizza.classList.remove('active')
             btnLanche.classList.remove('active')
             btnSobremesa.classList.add('active')
             btnPratos.classList.remove('active')
+            btnBebidas.classList.remove('active')
+
         })
 
         btnPratos.addEventListener('click', () => {
@@ -82,10 +125,29 @@ class Index {
             areaLanche.classList.remove('active')
             areaSobremesa.classList.remove('active')
             areaPratos.classList.add('active')
+            areaBebidas.classList.remove('active')
+
             btnPizza.classList.remove('active')
             btnLanche.classList.remove('active')
             btnSobremesa.classList.remove('active')
             btnPratos.classList.add('active')
+            btnBebidas.classList.remove('active')
+
+        })
+
+        btnBebidas.addEventListener('click', () => {
+            areaPizza.classList.remove('active')
+            areaLanche.classList.remove('active')
+            areaSobremesa.classList.remove('active')
+            areaPratos.classList.remove('active')
+            areaBebidas.classList.add('active')
+
+            btnPizza.classList.remove('active')
+            btnLanche.classList.remove('active')
+            btnSobremesa.classList.remove('active')
+            btnPratos.classList.remove('active')
+            btnBebidas.classList.add('active')
+
         })
     }
 
@@ -121,7 +183,7 @@ class Index {
         const removeItemButton = cartItem.querySelector('.card__trash');
         removeItemButton.addEventListener('click', () => {
             const itemPriceToRemove = parseFloat(cartItem.querySelector('.card__price').textContent.replace('R$ ', ''));
-
+            this.cartItems.pop()
             cartItems.removeChild(cartItem);
             let textCount = document.querySelector('.btn__count');
             const cardBtn = document.querySelector('.footer__cart-btn')
@@ -162,7 +224,7 @@ class Index {
                     cartButton.classList.toggle('animate')
                     this.addToCart(item);
                     this.addToArray(item)
-                    console.log(this.cartItems); // Verifique se os itens estão corretamente na matriz.
+                    console.log(this.cartItems); 
                     console.log(this.cartItems.length)
                 });
             })
@@ -184,10 +246,17 @@ class Index {
             burguerItem.querySelector('.index__burguer-item--name').innerHTML = item.name
             burguerItem.querySelector('.index__burguer-item--desc').innerHTML = item.description
 
-            const addToCartButton = burguerItem.querySelector('.add-to-cart-button');
-            addToCartButton.addEventListener('click', () => {
-                this.addToCart(item);
-            });
+            const addToCartButton = burguerItem.querySelectorAll('.add-to-cart-button');
+            const cartButton = document.querySelector('.footer__cart-btn')
+            addToCartButton.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    cartButton.classList.toggle('animate')
+                    this.addToCart(item);
+                    this.addToArray(item)
+                    console.log(this.cartItems); 
+                    console.log(this.cartItems.length)
+                });
+            })
 
             if (item.sale === true) {
                 const sale = burguerItem.querySelector('.index__burguer-item .index__sale')
@@ -207,10 +276,17 @@ class Index {
             pratosItem.querySelector('.index__pratos-item--name').innerHTML = item.name
             pratosItem.querySelector('.index__pratos-item--desc').innerHTML = item.description
 
-            const addToCartButton = pratosItem.querySelector('.add-to-cart-button');
-            addToCartButton.addEventListener('click', () => {
-                this.addToCart(item);
-            });
+            const addToCartButton = pratosItem.querySelectorAll('.add-to-cart-button');
+            const cartButton = document.querySelector('.footer__cart-btn')
+            addToCartButton.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    cartButton.classList.toggle('animate')
+                    this.addToCart(item);
+                    this.addToArray(item)
+                    console.log(this.cartItems); 
+                    console.log(this.cartItems.length)
+                });
+            })
 
             if (item.sale === true) {
                 const sale = pratosItem.querySelector('.index__pratos-item .index__sale')
@@ -230,10 +306,17 @@ class Index {
             sobremesasItem.querySelector('.index__sobremesas-item--name').innerHTML = item.name
             sobremesasItem.querySelector('.index__sobremesas-item--desc').innerHTML = item.description
 
-            const addToCartButton = sobremesasItem.querySelector('.add-to-cart-button');
-            addToCartButton.addEventListener('click', () => {
-                this.addToCart(item);
-            });
+            const addToCartButton = sobremesasItem.querySelectorAll('.add-to-cart-button');
+            const cartButton = document.querySelector('.footer__cart-btn')
+            addToCartButton.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    cartButton.classList.toggle('animate')
+                    this.addToCart(item);
+                    this.addToArray(item)
+                    console.log(this.cartItems); 
+                    console.log(this.cartItems.length)
+                });
+            })
 
             if (item.sale === true) {
                 const sale = sobremesasItem.querySelector('.index__sobremesas-item .index__sale')
@@ -242,6 +325,36 @@ class Index {
         
         })
         
+    }
+
+    bebidas() {
+        bebidasJson.forEach((item, index) => {
+            let bebidasItem = document.querySelector('.index__model .index__bebidas-item').cloneNode(true)
+            document.querySelector('.index__bebidas-area').append(bebidasItem)
+    
+            bebidasItem.querySelector('.index__bebidas-item--img img').src = item.img
+            bebidasItem.querySelector('.index__bebidas-item--price').innerHTML = `R$ ${item.price.toFixed(2)}`
+            bebidasItem.querySelector('.index__bebidas-item--name').innerHTML = item.name
+            bebidasItem.querySelector('.index__bebidas-item--desc').innerHTML = item.description
+    
+            console.log(item.sale)
+            const addToCartButton = bebidasItem.querySelectorAll('.add-to-cart-button');
+            const cartButton = document.querySelector('.footer__cart-btn')
+            addToCartButton.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    cartButton.classList.toggle('animate')
+                    this.addToCart(item);
+                    this.addToArray(item)
+                    console.log(this.cartItems); 
+                    console.log(this.cartItems.length)
+                });
+            })
+    
+            if (item.sale === true) {
+                const sale = bebidasItem.querySelector('.index__bebidas-item .index__sale')
+                sale.classList.add('active')
+            }
+        })
     }
 
     addToArray(item) {
@@ -309,6 +422,7 @@ class Index {
     
         // Remova todos os itens do carrinho
         while (cartItems.firstChild) {
+            this.cartItems = []
             cartItems.removeChild(cartItems.firstChild);
         }
     
@@ -342,8 +456,14 @@ class Index {
             cart.style.display = 'block'
             finishBtn.style.display = 'none'
             avanceBtn.style.display = 'block'
+
+            console.log('observando',this.cartItems)
         });
-        clearCartButton.addEventListener('click', this.clearCart);
+        clearCartButton.addEventListener('click', () => {
+            this.clearCart()
+            console.log('observando',this.cartItems);
+
+        })
     }
 
     countCart() {
@@ -418,6 +538,7 @@ class Index {
 	 * initialize instance
 	 */
     init() {
+        this.openMenu()
         this.indexSwiper()
         this.videoSpeed()
         this.filter()
@@ -425,6 +546,7 @@ class Index {
         this.burguer()
         this.pratos()
         this.sobremesas()
+        this.bebidas()
         this.steps()
         this.btnClear()
         this.countCart()
