@@ -3,20 +3,6 @@ class Page {
         this.init()
     }
 
-    loader() {
-        setTimeout(() => {
-            const loader = document.querySelector(".loader-wrapper");
-            const content = document.querySelector(".main");
-            
-            loader.style.transform = "translateY(-100%)";
-            content.style.transform = "translateY(0)";
-            
-            setTimeout(() => {
-                loader.style.display = "none";
-            }, 500); 
-        }, 1000);
-    }
-
 
     openMenu() {
         const navOpen = document.querySelectorAll('.nav__open')
@@ -45,7 +31,6 @@ class Page {
     }
 
     init() {
-        this.loader()
         this.openMenu()
         console.log('hello')
     }
