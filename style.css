@@ -185,6 +185,10 @@ ul {
     width: 100%;
 }
 
+.swiper-pagination-bullet-active {
+    background-color: #007d2d !important;
+}
+
 .swiper__img-box {
     width: 100%;
     height: auto;
@@ -198,6 +202,12 @@ ul {
     display: block;
     margin: 0 auto;
     object-fit: cover;
+}
+
+
+
+.swiper__mobile {
+    display: none;
 }
 
 /* ========INDEX =================*/
@@ -847,6 +857,17 @@ ul {
 
     .nav__open {
         display: block;
+    }
+
+    /* ===========SWIPER=========== */
+
+
+    .swiper__mobile {
+        display: block;
+    }
+
+    .swiper__desktop {
+        display: none;
     }
 
     /* ===========NAV=========== */

@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="mask-icon" href="svg/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="style.css">
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,15 +76,22 @@
                 <div class="swiper-wrapper">
                   <!-- Slides -->
                   <div class="swiper-slide">
-                    <div class="swiper__img-box">
-                        <video class="swiper__img" src="./video/video1.mp4" autoplay muted loop>
-                    </div>
+                        <div class="swiper__img-box swiper__desktop">
+                            <video class="swiper__img" src="./video/video1.mp4" autoplay muted loop>
+                        </div>
+                        <div class="swiper__img-box swiper__mobile">
+                            <img class="swiper__img" src="img/img-slider2.jpg" alt="">
+                        </div>
                   </div>
                   <div class="swiper-slide">
-                    <div class="swiper__img-box">
+                    <div class="swiper__img-box swiper__desktop">
                         <video class="swiper__img" src="./video/video2.mp4" autoplay muted loop>
                     </div>
+                    <div class="swiper__img-box swiper__mobile">
+                        <img class="swiper__img" src="img/img-slider.jpg" alt="">
+                    </div>
                   </div>
+                  
                  
                   <!-- <div class="swiper-slide">
                     <div class="swiper__img-box">
