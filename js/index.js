@@ -4,6 +4,7 @@ class Index {
      * create a home
      */
     constructor() {
+        this.cartItems = []
         this.init()
     }
 
@@ -19,9 +20,17 @@ class Index {
               prevEl: '.swiper-button-prev',
             },
             autoplay: true,
-            speed: 3000,
+            speed: 1000,
             
           });
+    }
+
+    videoSpeed() {
+        const videos = document.querySelectorAll('video')
+
+        videos.forEach(video => {
+            video.playbackRate = 0.5
+        })
     }
 
     filter() {
@@ -80,6 +89,61 @@ class Index {
         })
     }
 
+    addToCart(item) {
+        const cartItems = document.querySelector('.cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        const cartItem = document.createElement('li');
+        cartItem.innerHTML = 
+        `
+        <div class="card__item">
+            <div class="card__photo">
+                <img class="card__img" src="${item.img}" alt="${item.name}">
+            </div>
+            <div class="card__description">
+                <span class="card__name">${item.name}</span>
+                <span class="card__info">${item.description}</span>
+                <span class="card__price">R$ ${item.price.toFixed(2)}</span>
+            </div>
+            <button class="card__trash">
+                <svg class="card__icon" width="26" height="32" viewBox="0 0 26 32"><g transform="translate(-259 -203)"><path d="M282,211H262a1,1,0,0,1,0-2h20a1,1,0,0,1,0,2Zm-1,20a2,2,0,0,1-2,2H265a2,2,0,0,1-2-2V213h18v18Zm-12-25a1,1,0,0,1,1-1h4a1,1,0,0,1,1,1v1h-6v-1Zm14,1h-6v-2a2,2,0,0,0-2-2h-6a2,2,0,0,0-2,2v2h-6a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2v18a4,4,0,0,0,4,4h14a4,4,0,0,0,4-4V213a2,2,0,0,0,2-2v-2a2,2,0,0,0-2-2Zm-11,24a1,1,0,0,0,1-1V218a1,1,0,0,0-2,0v12a1,1,0,0,0,1,1Zm-5,0a1,1,0,0,0,1-1V218a1,1,0,0,0-2,0v12a1,1,0,0,0,1,1Zm10,0a1,1,0,0,0,1-1V218a1,1,0,0,0-2,0v12a1,1,0,0,0,1,1Z" fill="#f80000" fill-rule="evenodd"/></g></svg>
+            </button>
+        </div>
+        `;
+    
+        cartItems.appendChild(cartItem);
+
+        const currentTotal = parseFloat(cartTotal.innerText);
+        const itemPrice = parseFloat(item.price);
+        const newTotal = currentTotal + itemPrice;
+        cartTotal.innerText = newTotal.toFixed(2);
+        const cartItemsVerificacao = document.querySelector('.cart-items');
+
+        const removeItemButton = cartItem.querySelector('.card__trash');
+        removeItemButton.addEventListener('click', () => {
+            const itemPriceToRemove = parseFloat(cartItem.querySelector('.card__price').textContent.replace('R$ ', ''));
+
+            cartItems.removeChild(cartItem);
+            let textCount = document.querySelector('.btn__count');
+            const cardBtn = document.querySelector('.footer__cart-btn')
+            const modal = document.getElementById("pedido")
+            const currentTotal = parseFloat(cartTotal.innerText);
+            const newTotal = currentTotal - itemPriceToRemove;
+            cartTotal.innerText = newTotal.toFixed(2);
+            const children = cartItemsVerificacao.childElementCount
+            console.log(children)
+            if (cartItemsVerificacao.childElementCount === 0) {
+                console.log('O carrinho está vazio. Ele possui filhos.');
+                
+                cardBtn.classList.remove("active")
+                textCount.classList.remove("active")
+                var modalInstance = bootstrap.Modal.getInstance(modal);
+                modalInstance.hide();
+
+            }
+        });
+
+    }
+
     pizza() {
         pizzaJson.forEach((item, index) => {
             let pizzaItem = document.querySelector('.index__model .index__pizza-item').cloneNode(true)
@@ -91,6 +155,17 @@ class Index {
             pizzaItem.querySelector('.index__pizza-item--desc').innerHTML = item.description
     
             console.log(item.sale)
+            const addToCartButton = pizzaItem.querySelectorAll('.add-to-cart-button');
+            const cartButton = document.querySelector('.footer__cart-btn')
+            addToCartButton.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    cartButton.classList.toggle('animate')
+                    this.addToCart(item);
+                    this.addToArray(item)
+                    console.log(this.cartItems); // Verifique se os itens estão corretamente na matriz.
+                    console.log(this.cartItems.length)
+                });
+            })
     
             if (item.sale === true) {
                 const sale = pizzaItem.querySelector('.index__pizza-item .index__sale')
@@ -99,7 +174,6 @@ class Index {
         })
     }
     
-
     burguer() {
         burguerJson.forEach((item, index ) => {
             let burguerItem = document.querySelector('.index__model .index__burguer-item').cloneNode(true)
@@ -109,6 +183,11 @@ class Index {
             burguerItem.querySelector('.index__burguer-item--price').innerHTML = `R$ ${item.price.toFixed(2)}`
             burguerItem.querySelector('.index__burguer-item--name').innerHTML = item.name
             burguerItem.querySelector('.index__burguer-item--desc').innerHTML = item.description
+
+            const addToCartButton = burguerItem.querySelector('.add-to-cart-button');
+            addToCartButton.addEventListener('click', () => {
+                this.addToCart(item);
+            });
 
             if (item.sale === true) {
                 const sale = burguerItem.querySelector('.index__burguer-item .index__sale')
@@ -128,15 +207,19 @@ class Index {
             pratosItem.querySelector('.index__pratos-item--name').innerHTML = item.name
             pratosItem.querySelector('.index__pratos-item--desc').innerHTML = item.description
 
+            const addToCartButton = pratosItem.querySelector('.add-to-cart-button');
+            addToCartButton.addEventListener('click', () => {
+                this.addToCart(item);
+            });
+
             if (item.sale === true) {
                 const sale = pratosItem.querySelector('.index__pratos-item .index__sale')
                 sale.classList.add('active')
             }
         
         })
-        
     }
-
+    
     sobremesas() {
         sobremesasJson.forEach((item, index ) => {
             let sobremesasItem = document.querySelector('.index__model .index__sobremesas-item').cloneNode(true)
@@ -147,6 +230,11 @@ class Index {
             sobremesasItem.querySelector('.index__sobremesas-item--name').innerHTML = item.name
             sobremesasItem.querySelector('.index__sobremesas-item--desc').innerHTML = item.description
 
+            const addToCartButton = sobremesasItem.querySelector('.add-to-cart-button');
+            addToCartButton.addEventListener('click', () => {
+                this.addToCart(item);
+            });
+
             if (item.sale === true) {
                 const sale = sobremesasItem.querySelector('.index__sobremesas-item .index__sale')
                 sale.classList.add('active')
@@ -155,6 +243,123 @@ class Index {
         })
         
     }
+
+    addToArray(item) {
+        this.cartItems.push(item)
+    }
+
+    generateWhatsAppLink(items, nome, telefone, cep, endereco, numero, complemento, bairro) {
+        let mensagem = `Olá, meu nome é ${nome}. Meu telefone é ${telefone}. Meu endereço é ${endereco}, ${numero}, ${complemento}, ${bairro}. Meu CEP é ${cep}.%0a%0a`;
+
+        items.forEach((item, index) => {
+            if (item.price !== undefined) {
+                mensagem += `${item.name} - R$ ${item.price.toFixed(2)}%0a`;
+            }else {
+                mensagem += ` ${item.name} - R$ Indisponível%0a`;
+            }
+        });
+    
+        const numeroWhatsApp = '14998979211';
+    
+        return `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensagem}`;
+    }
+
+    steps() {
+        const avanceBtn = document.querySelector('.form__avance')
+        const finishBtn = document.querySelector('.form__finish')
+        const form = document.querySelector('.form')
+        const cart = document.querySelector('.cart')
+        const nomeInput = document.querySelector('input[name="nome"]');
+        const telefoneInput = document.querySelector('input[name="telefone"]');
+        const cepInput = document.querySelector('input[name="cep"]');
+        const enderecoInput = document.querySelector('input[name="endereco"]');
+        const numeroInput = document.querySelector('input[name="numero"]');
+        const complementoInput = document.querySelector('input[name="complemento"]');
+        const bairroInput = document.querySelector('input[name="bairro"]');
+        
+        finishBtn.style.display = 'none';
+        form.style.display = 'none';
+
+        avanceBtn.addEventListener('click', () => {
+            form.style.display = 'block';
+            cart.style.display = 'none';
+            finishBtn.style.display = 'block';
+            avanceBtn.style.display = 'none';
+        })
+
+        finishBtn.addEventListener('click', () => {
+            const nome = nomeInput.value;
+            const telefone = telefoneInput.value;
+            const cep = cepInput.value;
+            const endereco = enderecoInput.value;
+            const numero = numeroInput.value;
+            const complemento = complementoInput.value;
+            const bairro = bairroInput.value;
+        
+            const whatsappLink = this.generateWhatsAppLink(this.cartItems, nome, telefone, cep, endereco, numero, complemento, bairro);
+        
+            // Abre o link no WhatsApp quando o botão é clicado
+            window.open(whatsappLink);
+        });
+    }
+
+    clearCart() {
+        const cartItems = document.querySelector('.cart-items');
+        const cartTotal = document.getElementById('cart-total');
+    
+        // Remova todos os itens do carrinho
+        while (cartItems.firstChild) {
+            cartItems.removeChild(cartItems.firstChild);
+        }
+    
+        // Zere o total do carrinho
+        cartTotal.innerText = '0.00';
+    
+        // Oculte o botão e o contador do carrinho, se necessário
+        const cardBtn = document.querySelector('.footer__cart-btn');
+        const textCount = document.querySelector('.btn__count');
+        cardBtn.classList.remove('active');
+        textCount.classList.remove('active');
+    
+        const modal = document.getElementById('pedido');
+        const modalInstance = bootstrap.Modal.getInstance(modal);
+        if (modalInstance) {
+            modalInstance.hide();
+        }
+    }
+
+    btnClear() {
+        const clearCartButton = document.querySelector('.clear-cart-button');
+        const finishBtn = document.querySelector('.form__finish')
+        const avanceBtn = document.querySelector('.form__avance')
+        const form = document.querySelector('.form')
+        const cart = document.querySelector('.cart')
+
+
+        finishBtn.addEventListener('click', () => {
+            this.clearCart()
+            form.style.display = 'none'
+            cart.style.display = 'block'
+            finishBtn.style.display = 'none'
+            avanceBtn.style.display = 'block'
+        });
+        clearCartButton.addEventListener('click', this.clearCart);
+    }
+
+    countCart() {
+        const btnAdd = document.querySelectorAll('.index__item-add');
+        let textCount = document.querySelector('.btn__count');
+        const cardBtn = document.querySelector('.footer__cart-btn')
+        
+        
+        btnAdd.forEach(btn => {
+            btn.addEventListener('click', () => {
+                cardBtn.classList.add("active")
+                textCount.classList.add("active")
+            });
+        });
+    }
+
 
     startCounterAnimation() {
         const valueDisplays = document.querySelectorAll('.index__numbers-main');
@@ -209,21 +414,22 @@ class Index {
         });
     }
 
-
-   
-
     /**
 	 * initialize instance
 	 */
     init() {
         this.indexSwiper()
+        this.videoSpeed()
         this.filter()
         this.pizza()
         this.burguer()
         this.pratos()
         this.sobremesas()
+        this.steps()
+        this.btnClear()
+        this.countCart()
         this.startCounterAnimation()
-
+        console.log(this.cartItems)
         console.log('hello')
 
     }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,14 +59,15 @@
               <!-- Slides -->
               <div class="swiper-slide">
                 <div class="swiper__img-box">
-                    <video class="swiper__img" src="./video/gif1_comblur.mp4" autoplay loop>
+                    <video class="swiper__img" src="./video/video1.mp4" autoplay muted loop>
                 </div>
               </div>
               <div class="swiper-slide">
                 <div class="swiper__img-box">
-                    <video class="swiper__img" src="./video/gif2.mp4" autoplay  loop>
+                    <video class="swiper__img" src="./video/video2.mp4" autoplay muted loop>
                 </div>
               </div>
+             
               <!-- <div class="swiper-slide">
                 <div class="swiper__img-box">
                     <picture>
@@ -101,13 +102,70 @@
               </div> -->
               
               
-              ...
             </div>
             <!-- If we need pagination -->
             <div class="swiper-pagination"></div>
           </div>
 
     </section>
+    
+
+    <!-- Modal -->
+    <div class="modal fade" id="pedido">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Meus Pedidos</h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="cart">
+                    <ul class="cart-items"></ul>
+                    <div class="cart-total">
+                        Total: R$ <span id="cart-total">0.00</span>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form__input-box">
+                        <label class="form__label" for="nome">Nome:</label>
+                        <input class="form__input" name="nome" type="text" placeholder="Digite seu nome" required>
+                    </div>
+                    <div class="form__input-box">
+                        <label class="form__label" for="telefone">Telefone:</label>
+                        <input class="form__input" name="telefone" type="text" placeholder="Ex. (14)99999-9999" required>
+                    </div>
+                    <div class="form__input-box">
+                        <label class="form__label" for="cep">CEP:</label>
+                        <input class="form__input" name="cep" type="text" placeholder="Ex. 00000-000">
+                    </div>
+                    <div class="form__input-box">
+                        <label class="form__label" for="endereco">Endereço:</label>
+                        <input class="form__input" name="endereco" type="text" placeholder="Nome da rua" required>
+                    </div>
+                    <div class="form__input-box">
+                        <label class="form__label" for="numero">Número:</label>
+                        <input class="form__input" name="numero" type="text" placeholder="Numero da casa" required>
+                    </div>
+                    <div class="form__input-box">
+                        <label class="form__label" for="complemento">Complemento:</label>
+                        <input class="form__input" name="complemento" type="text" placeholder="Digite o complemento" required>
+                    </div>
+                    <div class="form__input-box">
+                        <label class="form__label" for="bairro">Bairro:</label>
+                        <input class="form__input" name="bairro" type="text" placeholder="Nome do bairro" required>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-danger clear-cart-button" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary form__avance">Avançar</button>
+            <button type="button" class="btn btn-primary form__finish">Finalizar</button>
+            </div>
+        </div>
+        </div>
+    </div>
     <div class="index__model">
         <div class="index__item index__pizza-item">
             <div class="index__sale">
@@ -119,8 +177,9 @@
             <div class="index__item-price index__pizza-item--price">R$ --</div>
             <div class="index__item-name index__pizza-item--name">--</div>
             <div class="index__item-desc index__pizza-item--desc">--</div>
-            <div class="index__item-add index__pizza-item--add">Adicionar</div>
+            <button class="index__item-add index__pizza-item--add add-to-cart-button" type="button">Adicionar</button>
         </div>
+
 
         <div class="index__item index__burguer-item">
             <div class="index__sale">
@@ -132,7 +191,7 @@
             <div class="index__item-price index__burguer-item--price">R$ --</div>
             <div class="index__item-name index__burguer-item--name">--</div>
             <div class="index__item-desc index__burguer-item--desc">--</div>
-            <div class="index__item-add index__burguer-item--add">Adicionar</div>
+            <div class="index__item-add index__burguer-item--add add-to-cart-button">Adicionar</div>
         </div>
         <div class="index__item index__pratos-item">
             <div class="index__sale">
@@ -144,7 +203,7 @@
             <div class="index__item-price index__pratos-item--price">R$ --</div>
             <div class="index__item-name index__pratos-item--name">--</div>
             <div class="index__item-desc index__pratos-item--desc">--</div>
-            <div class="index__item-add index__pratos-item--add">Adicionar</div>
+            <div class="index__item-add index__pratos-item--add add-to-cart-button">Adicionar</div>
         </div>
 
         <div class="index__item index__sobremesas-item">
@@ -157,7 +216,7 @@
             <div class="index__item-price index__sobremesas-item--price">R$ --</div>
             <div class="index__item-name index__sobremesas-item--name">--</div>
             <div class="index__item-desc index__sobremesas-item--desc">--</div>
-            <div class="index__item-add index__sobremesas-item--add">Adicionar</div>
+            <div class="index__item-add index__sobremesas-item--add add-to-cart-button">Adicionar</div>
         </div>
     </div>
     <section class="container">
@@ -332,6 +391,10 @@
         </div>
     </section>
     <footer class="footer">
+        <button type="button" class="footer__cart-btn" data-bs-toggle="modal" data-bs-target="#pedido">
+            <svg class="index__cart-icon" width="36.634" height="36.731" viewBox="0 0 26.634 26.731"><g transform="translate(-1.02 -2.019)"><path d="M7.5,18A1.5,1.5,0,1,1,6,19.5,1.5,1.5,0,0,1,7.5,18Z" transform="translate(1.5 7)" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M16.5,18A1.5,1.5,0,1,1,15,19.5,1.5,1.5,0,0,1,16.5,18Z" transform="translate(4.875 7)" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M13,13V11m0,0V9m0,2h2m-2,0H11" transform="translate(3.6 3)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.5"/><path d="M2,3l.344.143C4.056,3.857,4.913,4.214,5.4,5.064s.49,1.979.49,4.236v4.246c0,4.589.083,6.1,1.223,7.529S10.09,22.5,13.76,22.5h1.4m5.579,0c2.054,0,3.081,0,3.807-.7s.933-1.894,1.348-4.279l.658-3.783c.457-2.713.685-4.069.1-4.97s-2.58-.9-4.8-.9H13.873m-7.981,0H8.579" transform="translate(0 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.5"/></g></svg>
+            <div class="btn__count">!</div>
+        </button>
         <div class="container">
             <div class="footer__top">
                 <a class="footer__logo" href="">
@@ -339,19 +402,21 @@
                 </a>
                 <div class="footer__social">
                     <a href="" class="footer__social-item">
-                        <img src="/svg/facebook-svgrepo-com.svg" alt="">
+                        <img width="26" height="26" src="/svg/facebook-svgrepo-com.svg" alt="">
                     </a>
                     <a href="" class="footer__social-item">
-                        <img src="/svg/instagram-svgrepo-com.svg" alt="">
+                        <img width="26" height="26" src="/svg/instagram-svgrepo-com.svg" alt="">
                     </a>
                     <a href="" class="footer__social-item">
-                        <img src="/svg/twitter-svgrepo-com.svg" alt="">
+                        <img width="26" height="26" src="/svg/twitter-svgrepo-com.svg" alt="">
                     </a>
                 </div>
             </div>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="js/items.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>
+
