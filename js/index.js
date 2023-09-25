@@ -448,6 +448,7 @@ class Index {
         const avanceBtn = document.querySelector('.form__avance')
         const form = document.querySelector('.form')
         const cart = document.querySelector('.cart')
+        const backBtn = document.querySelector('.modal-back')
 
 
         finishBtn.addEventListener('click', () => {
@@ -456,14 +457,38 @@ class Index {
             cart.style.display = 'block'
             finishBtn.style.display = 'none'
             avanceBtn.style.display = 'block'
+            backBtn.classList.remove('active')
+
 
             console.log('observando',this.cartItems)
         });
         clearCartButton.addEventListener('click', () => {
+            form.style.display = 'none'
+            finishBtn.style.display = 'none'
+            cart.style.display = 'block'
+            avanceBtn.style.display = 'block'
+            backBtn.classList.remove('active')
+
             this.clearCart()
             console.log('observando',this.cartItems);
+        })
+
+        avanceBtn.addEventListener('click', () => {
+            backBtn.classList.add('active')
+        })
+
+        backBtn.addEventListener('click', () => {
+            cart.style.display = 'block'
+            form.style.display = 'none'
+            finishBtn.style.display = 'none'
+            avanceBtn.style.display = 'block'
+            backBtn.classList.remove('active')
+
+
 
         })
+
+        
     }
 
     countCart() {

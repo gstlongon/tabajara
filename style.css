@@ -520,6 +520,31 @@ ul {
     justify-content: space-between!important;
 }
 
+.modal-back {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #007d2d;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    position: relative;    
+}
+
+.modal-back svg {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-back.active {
+    opacity: 1;
+    pointer-events: all;
+    cursor: pointer;
+}
+
 /* ===========FORM========== */
 
 .form__input-box {
@@ -680,7 +705,7 @@ ul {
     gap: 40px;
 }
 
-.contact__content form {
+.contact__content .form__contact {
     width: 100%;
     height: auto;
     background-color: #FFF;
