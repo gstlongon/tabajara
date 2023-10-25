@@ -737,6 +737,102 @@ ul {
     height: 100%;
 }
 
+/* ===========ADMIN========== */
+
+
+.admin__login {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    margin: 60px auto 0;
+    padding: 0px 30px;
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #CCC;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.admin__input-box {
+    width: 100%;
+    height: auto;
+}
+
+.admin__label {
+    width: 100%;
+    height: auto;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.admin__input {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #CCC;
+    border-radius: 10px;
+}
+
+.admin__submit {
+    width: 100%;
+    height: 45px;
+    background: linear-gradient(to right, #f51313, #f51313, #f51313, #007d2d, #007d2d, #007d2d);
+    background-size: 230% 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: none;
+    font-weight: bold;
+    color: #FFF;
+    transition: .3s;
+}
+
+.admin__submit:hover  {
+    background-position: 100% 0;
+}
+
+.admin__register-btn {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 10px;
+    border: none;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.admin__register-btn:hover {
+    color: #f51313;
+}
+
+.admin__register {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    background-color: #FFF;
+    position: absolute;
+    left: -100%;
+    top: 0px;
+    opacity: 1;
+    overflow-y: scroll;
+    transition: .5s;
+}
+
+.admin__register.active {
+    left: 0px;
+}
+
+.register-close {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+}
+
+
+
 /* ===========FOOTER========== */
 
 .footer {
