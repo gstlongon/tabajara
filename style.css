@@ -740,6 +740,23 @@ ul {
 /* ===========ADMIN========== */
 
 
+.notification {
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    transition: top 0.5s;
+}
+
+.notification__error {
+    background-color: #f44336;
+}
+
 .admin__login {
     width: 100%;
     height: auto;
@@ -768,9 +785,19 @@ ul {
     font-weight: bold;
 }
 
-.admin__input {
+.admin__input,
+.admin__select {
     width: 100%;
     height: 50px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #CCC;
+    border-radius: 10px;
+}
+
+.admin__text {
+    width: 100%;
+    height: 250px;
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #CCC;
@@ -829,6 +856,14 @@ ul {
     position: absolute;
     right: 30px;
     top: 30px;
+}
+
+
+.admin__add-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
 }
 
 

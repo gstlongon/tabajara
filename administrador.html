@@ -67,96 +67,101 @@
         </div>
     </header>
     <div class="main">
-        <div class="admin__login">
-            <form action="">
-                <div class="admin__input-box">
-                    <label class="admin__label" for="login">Usuário:</label>
-                    <input class="admin__input" name="login" type="text" placeholder="Digite o usuário">
-                </div>
-                <div class="admin__input-box">
-                    <label class="admin__label" for="senha">Senha:</label>
-                    <input class="admin__input" name="senha" type="text" placeholder="Digite a senha">
-                </div>
-                <button type="submit" class="admin__submit">
-                    Entrar
-                </button>
-                <a class="admin__register-btn">
-                    Registrar administrador
-                </a>
-            </form>
-            <div class="admin__photo">
-                <img class="admin__img" src="img/tabajara-footer.png" alt="Animação segurando uma pizza">
-            </div>
-            <div class="admin__register">
-                <div class="register-close">
-                    <svg class="" width="21.5" height="21.5" viewBox="0 0 21.5 21.5"><g transform="translate(-1.25 -1.25)"><circle cx="10" cy="10" r="10" transform="translate(2 2)" fill="none" stroke="#007d2d" stroke-width="1.5"/><path d="M14.5,9.5l-5,5m0-5,5,5" fill="none" stroke="#007d2d" stroke-linecap="round" stroke-width="1.5"/></g></svg>
-                </div>
-                <h3>Registre o Restaurante</h3>
-                <form action="" id="register_adm">
+        <div class="container">
+            <div class="admin__login">
+                <!-- <div class="notification__error">Login ou senha incorretos. Tente novamente.</div> -->
+    
+                <form id="adm__login" action="login.php" method="post">
                     <div class="admin__input-box">
-                        <label class="admin__label" for="cnpj">CNPJ:</label>
-                        <input class="admin__input" name="cnpj" type="text" placeholder="Digite o CNPJ" required>
-                    </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="nome_fantasia">Nome fantasia:</label>
-                        <input class="admin__input" name="nome_fantasia" type="text" placeholder="Digite o nome fantasia">
-                    </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="razao_social">Razão Social:</label>
-                        <input class="admin__input" name="razao_social" type="text" placeholder="Digite o nome fantasia">
-                    </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="user">Nome do usuário:</label>
-                        <input class="admin__input" name="user" type="text" placeholder="Digite a razão social" required>
+                        <label class="admin__label" for="login">Usuário:</label>
+                        <input class="admin__input" name="login" id="login" type="text" placeholder="Digite o usuário">
                     </div>
                     <div class="admin__input-box">
                         <label class="admin__label" for="senha">Senha:</label>
-                        <input class="admin__input senha" name="senha" type="password" placeholder="Digite a senha" required>
+                        <input class="admin__input" name="senha" id="senha"
+                        type="password" placeholder="Digite a senha">
                     </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="cofirme_senha">Confirme a senha:</label>
-                        <input class="admin__input confirma__senha" name="confirme_senha" type="password" placeholder="Confirme a senha" required>
-                    </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="email">E-mail:</label>
-                        <input class="admin__input" name="email" type="text" placeholder="Digite o E-mail" required>
-                    </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="telefone">Telefone:</label>
-                        <input class="admin__input" name="telefone" type="text" placeholder="Digite o Telefone" required>
-                    </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="cep">CEP:</label>
-                        <input class="admin__input txtcep" name="cep" type="text" placeholder="Digite o CEP" required>
-                    </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="end_rua">Nome da Rua:</label>
-                        <input class="admin__input txtlog" name="end_rua" type="text" placeholder="Digite o nome da rua" required>
-                    </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="end_numero">Número:</label>
-                        <input class="admin__input" name="end_numero" type="text" placeholder="Digite o número" required>
-                    </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="end_complemento">Complemento:</label>
-                        <input class="admin__input" name="end_complemento" type="text" placeholder="Digite um Complemento">
-                    </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="end_bairro">Bairro:</label>
-                        <input class="admin__input txtbairro" name="end_bairro" type="text" placeholder="Digite o nome do bairro" required>
-                    </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="end_cidade">Cidade:</label>
-                        <input class="admin__input txtcidade" name="end_cidade" type="text" placeholder="Digite a cidade" required>
-                    </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="end_estado">Estado:</label>
-                        <input class="admin__input txtuf" name="end_estado" type="text" placeholder="Digite a estado" required>
-                    </div>
+                    <button type="submit" value="Entrar" class="admin__submit">
+                        Entrar
+                    </button>
+                    <a class="admin__register-btn">
+                        Registrar administrador
+                    </a>
                 </form>
-                <button id="admin__submit" type="submit" class="admin__submit">
-                    Registrar
-                </button>
+                <div class="admin__photo">
+                    <img class="admin__img" src="img/tabajara-footer.png" alt="Animação segurando uma pizza">
+                </div>
+                <div class="admin__register">
+                    <div class="register-close">
+                        <svg class="" width="21.5" height="21.5" viewBox="0 0 21.5 21.5"><g transform="translate(-1.25 -1.25)"><circle cx="10" cy="10" r="10" transform="translate(2 2)" fill="none" stroke="#007d2d" stroke-width="1.5"/><path d="M14.5,9.5l-5,5m0-5,5,5" fill="none" stroke="#007d2d" stroke-linecap="round" stroke-width="1.5"/></g></svg>
+                    </div>
+                    <h3>Registre o Restaurante</h3>
+                    <form action="" id="register_adm">
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="cnpj">CNPJ:</label> 
+                            <input class="admin__input" name="cnpj" type="text" placeholder="Digite o CNPJ" required>
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="nome_fantasia">Nome fantasia:</label>
+                            <input class="admin__input" name="nome_fantasia" type="text" placeholder="Digite o nome fantasia">
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="razao_social">Razão Social:</label>
+                            <input class="admin__input" name="razao_social" type="text" placeholder="Digite o nome fantasia">
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="user">Nome do usuário:</label>
+                            <input class="admin__input" name="user" type="text" placeholder="Digite a razão social" required>
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="senha">Senha:</label>
+                            <input class="admin__input senha" name="senha" type="password" placeholder="Digite a senha" required>
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="cofirme_senha">Confirme a senha:</label>
+                            <input class="admin__input confirma__senha" name="confirme_senha" type="password" placeholder="Confirme a senha" required>
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="email">E-mail:</label>
+                            <input class="admin__input" name="email" type="text" placeholder="Digite o E-mail" required>
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="telefone">Telefone:</label>
+                            <input class="admin__input" name="telefone" type="text" placeholder="Digite o Telefone" required>
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="cep">CEP:</label>
+                            <input class="admin__input txtcep" name="cep" type="text" placeholder="Digite o CEP" required>
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="end_rua">Nome da Rua:</label>
+                            <input class="admin__input txtlog" name="end_rua" type="text" placeholder="Digite o nome da rua" required>
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="end_numero">Número:</label>
+                            <input class="admin__input" name="end_numero" type="text" placeholder="Digite o número" required>
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="end_complemento">Complemento:</label>
+                            <input class="admin__input" name="end_complemento" type="text" placeholder="Digite um Complemento">
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="end_bairro">Bairro:</label>
+                            <input class="admin__input txtbairro" name="end_bairro" type="text" placeholder="Digite o nome do bairro" required>
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="end_cidade">Cidade:</label>
+                            <input class="admin__input txtcidade" name="end_cidade" type="text" placeholder="Digite a cidade" required>
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="end_estado">Estado:</label>
+                            <input class="admin__input txtuf" name="end_estado" type="text" placeholder="Digite a estado" required>
+                        </div>
+                    </form>
+                    <button id="admin__submit" type="submit" class="admin__submit">
+                        Registrar
+                    </button>
+                </div>
             </div>
         </div>
     </div>

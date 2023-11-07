@@ -1,22 +1,15 @@
-class Admin {
+class Painel {
     constructor() {
         this.init()
     }
 
     register() {
 
-        const registerBtn = document.querySelector('.admin__register-btn')
-        const registerClose = document.querySelector('.register-close')
-        const registerBox = document.querySelector('.admin__register')
+        const registerBtn = document.querySelector('.admin__submit')
+        const registerClose = document.querySelector('.close')
         const input = document.querySelectorAll('.admin__input')
 
-
-        registerBtn.addEventListener('click', () => {
-            registerBox.classList.add('active')
-        })
-
         registerClose.addEventListener('click', () => {
-            registerBox.classList.remove('active')
             
             input.forEach(field => {
                 field.value = ""
@@ -80,11 +73,11 @@ class Admin {
     //get       <- servidor 
     //post      -> servidor
     //put       -> servidor (update)
+
     envia(){
-        let url="register.php";
-        let form = document.querySelector("#register_adm");
+        let url="register-item.php";
+        let form = document.querySelector("#register__item");
         const input = document.querySelectorAll('.admin__input')
-
         this.postForm(url,form).then(res=>{
             if(res.data.codigo=="1"){
                 Swal.fire({
@@ -108,71 +101,21 @@ class Admin {
                     })
             }
         })
-    }
-
-    erroLogin() {
-        let url="login.php";
-        let form = document.querySelector("#adm__login");
-        const input = document.querySelectorAll('.admin__input')
-
-        this.postForm(url,form).then(res=>{
-            if(res.data.codigo=="1"){
-                Swal.fire({
-                    title: 'Sucesso',
-                    text: res.data.texto,
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                    });
-
-                    input.forEach(field => {
-                        field.value = ""
-                    })
-            }
-
-            else {
-                Swal.fire({
-                    title: 'Erro',
-                    text: res.data.texto,
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                    })
-            }
-        })
-
     }
 
     submit() {
-        document.querySelector("#admin__submit").addEventListener("click", () => {
-            const senha = document.querySelector('.senha').value;
-            const confirmaSenha = document.querySelector('.confirma__senha').value;
-            const registerBox = document.querySelector('.admin__register')
-    
-            if (senha != confirmaSenha) {
-                window.alert('As Senhas não são idênticas!');
-            } else {
-                this.envia();
-                registerBox.classList.remove('active')
-            }
-    
-            console.log(senha);
-            console.log(confirmaSenha);
-            
+        document.querySelector("#item__submit").addEventListener("click", () => {
+            this.envia();
         });
     }
-
-    checkPassword() {
-
-    }
-
-
 
 
     init() {
         this.register()
-        this.campoCep()
+        // this.campoCep()
         this.submit()
         // this.checkPassword()
     }
 }
 
-new Admin
+new Painel
