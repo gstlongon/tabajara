@@ -2,9 +2,10 @@
 $servername = "localhost:3306";
 $username = "root";
 $password = "";
-$dbname = "tabajara";
+$database = "tabajara";
 try{
-    $conn=new PDO("mysql:host=$servername;dbname=$dbname",$username,$password);
+    $conn = new mysqli($servername, $username, $password, $database);
+
 }
 
 

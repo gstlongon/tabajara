@@ -1,24 +1,35 @@
 <?php
 require("php/config.php");
+require("administrador-painel.php");
 
-$data = json_decode(file_get_contents('php://input'));
 
-$foto_carro = $_FILES['foto_carro'];
-$nome_foto = $foto_carro['name'];
+// Verificar a conexão
+if ($conn->connect_error) {
+    die("Erro na conexão com o banco de dados: " . $conn->connect_error);
+}
 
+$nome_item = $_POST['nome_item'];
+$categoria_id = $_POST['categoria_id'];
+$valor = $_POST['valor'];
+$status_item = $_POST['status_item'];
+$descricao = $_POST['descricao'];
+$foto_item = $_FILES['foto_item'];
 $extensoes_permitidas = array('png', 'jpg', 'jpeg', 'jfif');
-$extensao = pathinfo($nome_foto, PATHINFO_EXTENSION);
+$extensao = pathinfo($foto_item['name'], PATHINFO_EXTENSION);
+$nome_item = strtolower(str_replace(' ', '-', $nome_item));
 
 if (in_array(strtolower($extensao), $extensoes_permitidas)) {
 
-    $destino = 'fotos_carros/' . $nome_foto;
+    $nome_foto = $nome_item . '.' . $extensao;
 
-    if (move_uploaded_file($foto_carro['tmp_name'], $destino)) {
-        $sql = "INSERT INTO carro (placa, marca, km, ano, cor, descricao, modelo, valor, nome_foto, destino)
-                VALUES ('$placa_carro', '$marca_carro', '$km_carro', '$ano_carro', '$cor_carro', '$descricao_carro', '$modelo_carro', '$preco_carro','$nome_foto','$destino')";
+    $destino = 'img/' . $nome_foto;
+
+    if (move_uploaded_file($foto_item['tmp_name'], $destino)) {
+        $sql = "INSERT INTO item (nome, categoria_id, valor, status_item, descricao, foto)
+                VALUES ('$nome_item', '$categoria_id', '$valor', '$status_item', '$descricao', '$nome_foto')";
         if ($conn->query($sql) === TRUE) {
             echo "<center><h1>Registro Inserido com Sucesso</h1>";
-            echo "<a href='index.html'><input type='button' value='Voltar'></a></center>";
+            echo "<a href='administrador-painel.php'><input type='button' value='Voltar'></a></center>";
         } else {
             echo "<h3>OCORREU UM ERRO: </h3>: " . $sql . "<br>" . $conn->error;
         }
@@ -29,29 +40,5 @@ if (in_array(strtolower($extensao), $extensoes_permitidas)) {
     echo "A extensão do arquivo não é permitida. Apenas arquivos PNG, JPG, JPEG e JFIF são aceitos.";
 }
 
-
-
-$nome = $data->nome_item;
-$categoriaID = $data->categoria;
-$valor = $data->valor;
-$statusItem = $data->status;
-$descricao = $data->descricao;
-
-
-$sql = "INSERT INTO item (nome, categoria_id, valor, status_item, descricao, foto)
-    VALUES (:nome, :valor, :statusItem, :descricao, :filename)";
-
-$stmt = $conn->prepare($sql);
-$stmt->bindParam(':nome', $nome);
-$stmt->bindParam(':valor', $valor);
-$stmt->bindParam(':statusItem', $statusItem);
-$stmt->bindParam(':descricao', $descricao);
-$stmt->bindParam(':filename', $filename);
-
-if ($stmt->execute()) {
-    echo json_encode(array("codigo" => 1, "texto" => "Registro inserido com sucesso."));
-} else {
-    echo json_encode(array("codigo" => 0, "texto" => "Erro ao inserir o registro."));
-}
-        
+$conn->close();
 ?>

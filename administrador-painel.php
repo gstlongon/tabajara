@@ -74,7 +74,7 @@ if(!$_SESSION["painel_administrador"]){
     </header>
 
 
-    <!-- Modal -->
+    <!-- Modal
     <div class="modal fade" id="item">
         <div class="modal-dialog">
         <div class="modal-content">
@@ -82,47 +82,39 @@ if(!$_SESSION["painel_administrador"]){
             <div class="modal-back">
                 <svg xmlns="http://www.w3.org/2000/svg" width="45.998" height="40" viewBox="0 0 45.998 40"><g transform="translate(-159.943 -191.959)"><path d="M194,480h39.995a2,2,0,0,1,0,4H194a2,2,0,0,1,0-4Z" transform="translate(-30.054 -270.04)" fill="#007d2d"/><path d="M164.774,211.96l16.586,16.582a2,2,0,1,1-2.832,2.832l-18-18a2,2,0,0,1,0-2.832l18-18a2,2,0,1,1,2.832,2.832Z" fill="#007d2d"/></g></svg>
             </div>
-            <h5 class="modal-title">Cadastrar item</h5>
+            <h5 class="modal-title">Cadastrar Item</h5>
             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                 <svg xmlns="http://www.w3.org/2000/svg" width="21.5" height="21.5" viewBox="0 0 21.5 21.5"><g transform="translate(-1.25 -1.25)"><circle cx="10" cy="10" r="10" transform="translate(2 2)" fill="none" stroke="#007d2d" stroke-width="1.5"/><path d="M14.5,9.5l-5,5m0-5,5,5" fill="none" stroke="#007d2d" stroke-linecap="round" stroke-width="1.5"/></g></svg>
             </button>
             </div>
             <div class="modal-body">
                 <div class="admin__add">
-                <form action="register__item.php" id="register__item" method="post" enctype="multipart/form-data">
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="nome_item">Nome do item: </label>
-                        <input class="admin__input" name="nome_item" type="text" placeholder="Digite o nome do item" required>
-                    </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="categoria">Categoria: </label>
-                        <select class="admin__select" name="categoria">
-                            <option class="admin__select-value" value="valor1">Valor 1</option>
-                            <option value="valor2" selected>Valor 2</option>
-                            <option value="valor3">Valor 3</option>
-                        </select>
-                    </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="valor">Valor: </label>
-                        <input class="admin__input" name="valor" type="text" placeholder="Digite o Valor" required>
-                    </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="status">Status: </label>
-                        <select class="admin__select" name="status">
-                            <option class="admin__select-value" value="valor1">Valor 1</option>
-                            <option value="valor2" selected>Valor 2</option>
-                        </select>
-                    </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="descricao">Descrição: </label>
-                        <textarea class="admin__text" name="descricao" id="descricao" placeholder="Digite a Descrição"></textarea>
-                    </div>
-                    <div class="admin__input-box">
-                        <label class="admin__label" for="foto">Foto: </label>
-                        <input type="file" id="foto" name="foto" accept="image/png, image/jpeg" />
-                    </div>
-                </form>
-
+                    <form action="register__item.php" id="register__item" method="post" enctype="multipart/form-data">
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="nome_item"></label> 
+                            <input class="admin__input" name="nome_item" type="text" placeholder="Digite o nome" required>
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="categoria"></label> 
+                            <input class="admin__input" name="categoria" type="text" placeholder="Categoria" required>
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="valor"></label> 
+                            <input class="admin__input" name="valor" type="text" placeholder="Valor" required>
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="status"></label>
+                            <input class="admin__input" name="status" type="text" placeholder="Status" required>
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="descricao"></label>
+                            <input class="admin__input" name="descricao" type="text" placeholder="Descrição">
+                        </div>
+                        <div class="admin__input-box">
+                            <label class="admin__label" for="foto"></label>
+                            <input class="admin__input" name="foto" type="file" placeholder="Foto">
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="modal-footer">
@@ -132,7 +124,101 @@ if(!$_SESSION["painel_administrador"]){
             </div>
         </div>
         </div>
+    </div> -->
+
+    <!-- <form method="POST" action="register-item.php" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>Nome: <input type="text" name="nome_item"></td>
+            <td>Categoria:
+                <select name="categoria_id">
+                    <option value="" disabled selected hidden>Selecione a categoria</option>
+                    <option value="1">Pizza</option>
+                    <option value="2">Lanches</option>
+                    <option value="3">Pratos</option>
+                    <option value="4">Sobremesas</option>
+                    <option value="5">Bebidas</option>
+                </select>
+            </td>
+            <td>Valor: <input type="number" name="valor"></td>
+            <td>Status:
+                <select name="status_item">
+                    <option value="" disabled selected hidden>Selecione o status</option>
+                    <option value="0">Desativado</option>
+                    <option value="1">Ativo</option>
+                </select>
+            </td>
+            <td>Descricao: <input type="text" name="descricao"></td>
+            <td>Foto: <input type="file" name="foto_item"></td>
+        </tr>
+    </table>
+    <input type="submit" value="Cadastrar">
+    <input type="reset" value="Limpar">
+    </form> -->
+    <div class="modal fade" id="item">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-back">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45.998" height="40" viewBox="0 0 45.998 40"><g transform="translate(-159.943 -191.959)"><path d="M194,480h39.995a2,2,0,0,1,0,4H194a2,2,0,0,1,0-4Z" transform="translate(-30.054 -270.04)" fill="#007d2d"/><path d="M164.774,211.96l16.586,16.582a2,2,0,1,1-2.832,2.832l-18-18a2,2,0,0,1,0-2.832l18-18a2,2,0,1,1,2.832,2.832Z" fill="#007d2d"/></g></svg>
+                    </div>
+                    <h5 class="modal-title">Cadastrar item</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="21.5" height="21.5" viewBox="0 0 21.5 21.5"><g transform="translate(-1.25 -1.25)"><circle cx="10" cy="10" r="10" transform="translate(2 2)" fill="none" stroke="#007d2d" stroke-width="1.5"/><path d="M14.5,9.5l-5,5m0-5,5,5" fill="none" stroke="#007d2d" stroke-linecap="round" stroke-width="1.5"/></g></svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="admin__add">
+                        <form action="register-item.php" id="register__item" method="post" enctype="multipart/form-data">
+                            <div class="admin__input-box">
+                                <label class="admin__label" for="nome_item">Nome do item:</label>
+                                <input class="admin__input" name="nome_item" type="text" placeholder="Digite o nome do item" required>
+                            </div>
+                            <div class="admin__input-box">
+                                <label class="admin__label" for="categoria_id">Categoria:</label>
+                                <select class="admin__select" name="categoria_id">
+                                    <option class="admin__select-value" value="" disabled selected hidden>Selecione a categoria</option>
+                                    <option value="1">Pizza</option>
+                                    <option value="2">Lanches</option>
+                                    <option value="3">Pratos</option>
+                                    <option value="4">Sobremesas</option>
+                                    <option value="5">Bebidas</option>
+                                </select>
+                            </div>
+                            <div class="admin__input-box">
+                                <label class="admin__label" for="valor">Valor:</label>
+                                <input class="admin__input" name="valor" type="number" placeholder="Digite o Valor" required>
+                            </div>
+                            <div class="admin__input-box">
+                                <label class="admin__label" for="status_item">Status:</label>
+                                <select class="admin__select" name="status_item">
+                                    <option class="admin__select-value" value="" disabled selected hidden>Selecione o status</option>
+                                    <option value="0">Desativado</option>
+                                    <option value="1">Ativo</option>
+                                </select>
+                            </div>
+                            <div class="admin__input-box">
+                                <label class="admin__label" for="descricao">Descrição:</label>
+                                <textarea class="admin__text" name="descricao" id="descricao" placeholder="Digite a Descrição"></textarea>
+                            </div>
+                            <div class="admin__input-box">
+                                <label class="admin__label" for="foto_item">Foto:</label>
+                                <input type="file" id="foto_item" name="foto_item" accept="image/png, image/jpeg" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" form="register__item" class="admin__submit" id="item__submit">
+                        Cadastrar
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
 
      <!-- Modal -->
      <div class="modal fade" id="cadastrar-cat">
@@ -272,8 +358,10 @@ if(!$_SESSION["painel_administrador"]){
                         <a href="" class="footer__social-item">
                             <img width="26" height="26" src="svg/twitter-svgrepo-com.svg" alt="">
                         </a>
-
                     </div>
+                    <a class="nav__btn" href="administrador-painel.php">
+                            Admin
+                        </a>
                 </div>
             </div>
         </div>
