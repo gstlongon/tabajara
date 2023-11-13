@@ -12,6 +12,7 @@ if(!$_SESSION["painel_administrador"]){
         <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
         <link rel="mask-icon" href="svg/safari-pinned-tab.svg" color="#5bbad5">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="theme-color" content="#ffffff">
     
@@ -45,25 +46,9 @@ if(!$_SESSION["painel_administrador"]){
                     </div>
                     <ul class="nav__list">
                         <li class="nav__item">
-                            <a class="nav__btn" href="index.html">
-                                Home
+                            <a class="nav__btn" href="index.php">
+                                Voltar para loja
                             </a>
-                        </li>
-                        <li>
-                            <a class="nav__btn" href="index.html#pedidos">
-                                Cardápio
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav__btn" href="sobre.html">
-                                Sobre Nós
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav__btn" href="contato.html">
-                                Contato
-                            </a>
-                        </li>
                     </ul>
                 </nav>
                 <button class="nav__open">
@@ -73,88 +58,8 @@ if(!$_SESSION["painel_administrador"]){
         </div>
     </header>
 
+    <!-- modal -->
 
-    <!-- Modal
-    <div class="modal fade" id="item">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <div class="modal-back">
-                <svg xmlns="http://www.w3.org/2000/svg" width="45.998" height="40" viewBox="0 0 45.998 40"><g transform="translate(-159.943 -191.959)"><path d="M194,480h39.995a2,2,0,0,1,0,4H194a2,2,0,0,1,0-4Z" transform="translate(-30.054 -270.04)" fill="#007d2d"/><path d="M164.774,211.96l16.586,16.582a2,2,0,1,1-2.832,2.832l-18-18a2,2,0,0,1,0-2.832l18-18a2,2,0,1,1,2.832,2.832Z" fill="#007d2d"/></g></svg>
-            </div>
-            <h5 class="modal-title">Cadastrar Item</h5>
-            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                <svg xmlns="http://www.w3.org/2000/svg" width="21.5" height="21.5" viewBox="0 0 21.5 21.5"><g transform="translate(-1.25 -1.25)"><circle cx="10" cy="10" r="10" transform="translate(2 2)" fill="none" stroke="#007d2d" stroke-width="1.5"/><path d="M14.5,9.5l-5,5m0-5,5,5" fill="none" stroke="#007d2d" stroke-linecap="round" stroke-width="1.5"/></g></svg>
-            </button>
-            </div>
-            <div class="modal-body">
-                <div class="admin__add">
-                    <form action="register__item.php" id="register__item" method="post" enctype="multipart/form-data">
-                        <div class="admin__input-box">
-                            <label class="admin__label" for="nome_item"></label> 
-                            <input class="admin__input" name="nome_item" type="text" placeholder="Digite o nome" required>
-                        </div>
-                        <div class="admin__input-box">
-                            <label class="admin__label" for="categoria"></label> 
-                            <input class="admin__input" name="categoria" type="text" placeholder="Categoria" required>
-                        </div>
-                        <div class="admin__input-box">
-                            <label class="admin__label" for="valor"></label> 
-                            <input class="admin__input" name="valor" type="text" placeholder="Valor" required>
-                        </div>
-                        <div class="admin__input-box">
-                            <label class="admin__label" for="status"></label>
-                            <input class="admin__input" name="status" type="text" placeholder="Status" required>
-                        </div>
-                        <div class="admin__input-box">
-                            <label class="admin__label" for="descricao"></label>
-                            <input class="admin__input" name="descricao" type="text" placeholder="Descrição">
-                        </div>
-                        <div class="admin__input-box">
-                            <label class="admin__label" for="foto"></label>
-                            <input class="admin__input" name="foto" type="file" placeholder="Foto">
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" value="Entrar" class="admin__submit" id="item__submit">
-                    Cadastrar
-                </button>
-            </div>
-        </div>
-        </div>
-    </div> -->
-
-    <!-- <form method="POST" action="register-item.php" enctype="multipart/form-data">
-    <table>
-        <tr>
-            <td>Nome: <input type="text" name="nome_item"></td>
-            <td>Categoria:
-                <select name="categoria_id">
-                    <option value="" disabled selected hidden>Selecione a categoria</option>
-                    <option value="1">Pizza</option>
-                    <option value="2">Lanches</option>
-                    <option value="3">Pratos</option>
-                    <option value="4">Sobremesas</option>
-                    <option value="5">Bebidas</option>
-                </select>
-            </td>
-            <td>Valor: <input type="number" name="valor"></td>
-            <td>Status:
-                <select name="status_item">
-                    <option value="" disabled selected hidden>Selecione o status</option>
-                    <option value="0">Desativado</option>
-                    <option value="1">Ativo</option>
-                </select>
-            </td>
-            <td>Descricao: <input type="text" name="descricao"></td>
-            <td>Foto: <input type="file" name="foto_item"></td>
-        </tr>
-    </table>
-    <input type="submit" value="Cadastrar">
-    <input type="reset" value="Limpar">
-    </form> -->
     <div class="modal fade" id="item">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -169,22 +74,39 @@ if(!$_SESSION["painel_administrador"]){
                 </div>
                 <div class="modal-body">
                     <div class="admin__add">
-                        <form action="register-item.php" id="register__item" method="post" enctype="multipart/form-data">
+                        <form action="item-adc.php" id="register__item" method="post" enctype="multipart/form-data">
                             <div class="admin__input-box">
                                 <label class="admin__label" for="nome_item">Nome do item:</label>
                                 <input class="admin__input" name="nome_item" type="text" placeholder="Digite o nome do item" required>
                             </div>
+
+                            <?php
+                            require("php/config.php");
+
+                            $sql = "SELECT * FROM categoria";
+                            $result = $conn->query($sql);
+
+                            ?>
+
                             <div class="admin__input-box">
                                 <label class="admin__label" for="categoria_id">Categoria:</label>
                                 <select class="admin__select" name="categoria_id">
                                     <option class="admin__select-value" value="" disabled selected hidden>Selecione a categoria</option>
-                                    <option value="1">Pizza</option>
-                                    <option value="2">Lanches</option>
-                                    <option value="3">Pratos</option>
-                                    <option value="4">Sobremesas</option>
-                                    <option value="5">Bebidas</option>
+
+                                    <?php
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo '<option value="' . $row["categoria_id"] . '">' . $row["nome"] . '</option>';
+                                        }
+                                    }
+                                    ?>
+
                                 </select>
                             </div>
+
+                            <?php
+                            ?>
+
                             <div class="admin__input-box">
                                 <label class="admin__label" for="valor">Valor:</label>
                                 <input class="admin__input" name="valor" type="number" placeholder="Digite o Valor" required>
@@ -193,8 +115,8 @@ if(!$_SESSION["painel_administrador"]){
                                 <label class="admin__label" for="status_item">Status:</label>
                                 <select class="admin__select" name="status_item">
                                     <option class="admin__select-value" value="" disabled selected hidden>Selecione o status</option>
-                                    <option value="0">Desativado</option>
-                                    <option value="1">Ativo</option>
+                                    <option value="0">Indisponivel</option>
+                                    <option value="1">Disponivel</option>
                                 </select>
                             </div>
                             <div class="admin__input-box">
@@ -228,33 +150,296 @@ if(!$_SESSION["painel_administrador"]){
             <div class="modal-back">
                 <svg xmlns="http://www.w3.org/2000/svg" width="45.998" height="40" viewBox="0 0 45.998 40"><g transform="translate(-159.943 -191.959)"><path d="M194,480h39.995a2,2,0,0,1,0,4H194a2,2,0,0,1,0-4Z" transform="translate(-30.054 -270.04)" fill="#007d2d"/><path d="M164.774,211.96l16.586,16.582a2,2,0,1,1-2.832,2.832l-18-18a2,2,0,0,1,0-2.832l18-18a2,2,0,1,1,2.832,2.832Z" fill="#007d2d"/></g></svg>
             </div>
-            <h5 class="modal-title">Cadastra Categoria</h5>
+            <h5 class="modal-title">Cadastrar Categoria</h5>
             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                 <svg xmlns="http://www.w3.org/2000/svg" width="21.5" height="21.5" viewBox="0 0 21.5 21.5"><g transform="translate(-1.25 -1.25)"><circle cx="10" cy="10" r="10" transform="translate(2 2)" fill="none" stroke="#007d2d" stroke-width="1.5"/><path d="M14.5,9.5l-5,5m0-5,5,5" fill="none" stroke="#007d2d" stroke-linecap="round" stroke-width="1.5"/></g></svg>
             </button>
             </div>
             <div class="modal-body">
                 <div class="admin__add">
-                    <h3>Categoria</h3>
-                    <form action="" id="add__category">
+                    <form action="categoria-adc.php" id="add__category"method="post">
                         <div class="admin__input-box">
                             <label class="admin__label" for="nome_categoria">Nome categoria:</label> 
                             <input class="admin__input" name="nome_categoria" type="text" placeholder="Ex: Pizza, Lanche, Sobremesa" required>
                         </div>
-                       
                     </form>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" value="Entrar" class="admin__submit">
+                <button type="submit" form="add__category" class="admin__submit">
                     Cadastrar
                 </button>
             </div>
         </div>
         </div>
+    </div>    
+
+
+    <style>
+    .admin__delete-btn {
+        background-color: #ff4d4d;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .admin__delete-btn:hover {
+        background-color: #4424;
+    }
+
+    .admin__search-btn {
+        background-color: #00008b;
+        color: #fff;
+        border: none;
+        padding: 3px 6px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .admin__search-btn:hover {
+        background-color: #4424;
+    }
+
+    .admin__searcha-btn {
+        background-color: #20b2aa;
+        color: #000;
+        border: none;
+        padding: 7px 12px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .admin__searcha-btn:hover {
+        background-color: #4424;
+    }
+
+    .admin__editar-btn {
+        background-color: #00008b;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .admin__editar-btn:hover {
+        background-color: #4424;
+    }
+    </style>
+
+    <?php
+    require("php/config.php");
+    function getCategoryName($categoryId, $conn) {
+        $sql_category_name = "SELECT nome FROM categoria WHERE categoria_id = $categoryId";
+        $result_category_name = $conn->query($sql_category_name);
+    
+        if ($result_category_name->num_rows > 0) {
+            $row_category_name = $result_category_name->fetch_assoc();
+            return $row_category_name["nome"];
+        } else {
+            return "Categoria Desconhecida";
+        }
+    }
+    ?>
+
+    <div class="modal fade" id="remov-cat">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-back">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45.998" height="40" viewBox="0 0 45.998 40">
+                            <g transform="translate(-159.943 -191.959)">
+                                <path d="M194,480h39.995a2,2,0,0,1,0,4H194a2,2,0,0,1,0-4Z" transform="translate(-30.054 -270.04)" fill="#007d2d"/>
+                                <path d="M164.774,211.96l16.586,16.582a2,2,0,1,1-2.832,2.832l-18-18a2,2,0,0,1,0-2.832l18-18a2,2,0,1,1,2.832,2.832Z" fill="#007d2d"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <h5 class="modal-title">Categorias Registradas</h5>            
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="21.5" height="21.5" viewBox="0 0 21.5 21.5">
+                            <g transform="translate(-1.25 -1.25)">
+                                <circle cx="10" cy="10" r="10" transform="translate(2 2)" fill="none" stroke="#007d2d" stroke-width="1.5"/>
+                                <path d="M14.5,9.5l-5,5m0-5,5,5" fill="none" stroke="#007d2d" stroke-linecap="round" stroke-width="1.5"/>
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="admin__add">
+                        <div class="admin__category-list">
+                        <div class="admin__search">
+                        <input type="text" id="searchCategory" oninput="searchCategories()" placeholder="Digite o nome">
+                        <button class="admin__search-btn" onclick="searchCategories()">Pesquisar</button> ㅤ
+                        <button class="admin__searcha-btn" type="button" data-bs-toggle="modal" data-bs-target="#cadastrar-cat">Cadastrar Categoria</button>
+                        </div> 
+                            
+                            <h3>Categorias Registradas</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <?php
+                                require("php/config.php");
+
+                                $sql = "SELECT DISTINCT categoria_id, nome FROM categoria";
+                                $result = $conn->query($sql);
+
+                                $counter = 1;
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        $categoryId2 = $counter;
+                                        $categoryId = $row["categoria_id"];
+                                        $categoryName = $row["nome"];
+                                        echo '<li style="margin-bottom: 10px; padding: 10px; background-color: #f5f5f5; border-radius: 5px;">
+                                        Categoria ' . $categoryId2 . ' ㅤㅤㅤㅤ<button class="admin__delete-btn" onclick="deleteCategory(' . $categoryId . ')">Apagar</button>
+                                        <button class="admin__editar-btn" onclick="editCategory(' . $categoryId . ')">Editar</button>
+                                        ㅤㅤㅤㅤ' .  ucwords(strtolower($categoryName)) . '
+                                            </li>';
+                                        $counter++;
+                                    }
+                                } else {
+                                    echo "<li>Nenhuma categoria encontrada</li>";
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-     <!-- Modal -->
+    <div class="modal fade" id="mostrar-item">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45.998" height="40" viewBox="0 0 45.998 40">
+                        <g transform="translate(-159.943 -191.959)">
+                            <path d="M194,480h39.995a2,2,0,0,1,0,4H194a2,2,0,0,1,0-4Z" transform="translate(-30.054 -270.04)" fill="#007d2d"/>
+                            <path d="M164.774,211.96l16.586,16.582a2,2,0,1,1-2.832,2.832l-18-18a2,2,0,0,1,0-2.832l18-18a2,2,0,1,1,2.832,2.832Z" fill="#007d2d"/>
+                        </g>
+                    </svg>
+                </div>
+                <h5 class="modal-title">Itens Registrados</h5>            
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="21.5" height="21.5" viewBox="0 0 21.5 21.5">
+                        <g transform="translate(-1.25 -1.25)">
+                            <circle cx="10" cy="10" r="10" transform="translate(2 2)" fill="none" stroke="#007d2d" stroke-width="1.5"/>
+                            <path d="M14.5,9.5l-5,5m0-5,5,5" fill="none" stroke="#007d2d" stroke-linecap="round" stroke-width="1.5"/>
+                        </g>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="admin__add">
+                    <div class="admin__itens-list">
+                        <div class="admin__search">
+                            <input type="text" id="searchItem" oninput="searchItems()" placeholder="Digite o nome">
+                            <button class="admin__search-btn" onclick="searchItems()">Pesquisar</button> ㅤ
+                            <button class="admin__searcha-btn" type="button" data-bs-toggle="modal" data-bs-target="#item">Cadastrar Item</button>
+                        </div> 
+                        <h3>Itens Registrados</h3>
+                        <!-- Adição de botões de filtro por categoria -->
+                        <div class="category-buttons">
+                            <?php
+                            $sql_categories = "SELECT DISTINCT categoria_id, nome FROM categoria";
+                            $result_categories = $conn->query($sql_categories);
+                            echo '<button class="category-filter-btn" onclick="filterItems(0)">Mostrar Todos</button>';
+                            if ($result_categories->num_rows > 0) {
+                                while ($row_category = $result_categories->fetch_assoc()) {
+                                    $category_id = $row_category["categoria_id"];
+                                    $category_name = $row_category["nome"];
+                                    echo '<button class="category-filter-btn" onclick="filterItems(' . $category_id . ')">' . $category_name . '</button>';
+                                }
+                            }
+                            ?>
+                        </div>
+                        <ul id="itemList" style="list-style: none; padding: 0;">
+                            <?php
+                            $sql = "SELECT * FROM item";
+                            $result = $conn->query($sql);
+                            $counter = 1;
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    $itemId = $row["item_id"];
+                                    $itemName = $row["nome"];
+                                    $categoryId = $row["categoria_id"];
+                                    $itemValue = $row["valor"];
+                                    $itemStatus = $row["status_item"];
+                                    $itemDescription = $row["descricao"];
+                                    $itemPhoto = $row["foto"];
+                                    $photoPath = "img2/" . $itemPhoto;
+                                    echo '<li class="item-item item-category-' . $categoryId . '" style="margin-bottom: 10px; padding: 10px; background-color: #f5f5f5; border-radius: 5px;">
+                                        <div class="item-preview">
+                                            <img src="' . $photoPath . '" alt="Foto do Item" style="max-width: 100px; max-height: 100px;" onclick="mostrarDetalhesItem(' . $itemId . ')">
+                                            <div class="item-info">
+                                                <h4>' . ucwords(strtolower($itemName)) . '</h4>
+                                                <button class="admin__delete-btn" onclick="deleteItem(' . $itemId . ')">Apagar</button>
+                                                <button class="admin__editar-btn" onclick="abrirFormularioEdicao(' . $itemId . ', \'' . $itemName . '\', ' . $itemValue . ', \'' . $itemDescription . '\', ' . $itemStatus . ', ' . $categoryId . ', \'' . $itemPhoto . '\');">Editar</button>
+
+                                            </div>                           
+                                        </div>
+                                        <div id="detalhesItem' . $itemId . '" style="display: none;">
+                                            Nome: ' . ucwords(strtolower($itemName)) . '<br>
+                                            Categoria: ' . getCategoryName($categoryId, $conn) . '<br>
+                                            Valor: ' . $itemValue . '<br>
+                                            Status: ' . ($itemStatus == 1 ? 'Disponível' : 'Indisponível') . '<br>
+                                            Descrição: ' . $itemDescription . '<br>
+                                        </div>
+                                    </li>';
+                                    $counter++;
+                                }
+                            } else {
+                                echo "<li>Nenhum item encontrado</li>";
+                            }
+                            ?>
+                        </ul>
+                        <script>
+                            function mostrarDetalhesItem(itemId) {
+                                var detalhesItem = document.getElementById('detalhesItem' + itemId);
+                                if (detalhesItem.style.display === 'none') {
+                                    detalhesItem.style.display = 'block';
+                                } else {
+                                    detalhesItem.style.display = 'none';
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <style>
+        .category-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            overflow-x: auto; /* Adicionando overflow para rolar os botões horizontalmente se necessário */
+        }
+
+        .category-filter-btn {
+            background-color: #007d2d;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .category-filter-btn:hover {
+            background-color: #005226;
+        }
+    </style>
+
+
+
+    <!-- Modal -->
      <div class="modal fade" id="cadastrar-cliente">
         <div class="modal-dialog">
         <div class="modal-content">
@@ -310,13 +495,144 @@ if(!$_SESSION["painel_administrador"]){
         </div>
     </div>
 
+    <div class="modal fade" id="promocao">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45.998" height="40" viewBox="0 0 45.998 40">
+                        <g transform="translate(-159.943 -191.959)">
+                            <path d="M194,480h39.995a2,2,0,0,1,0,4H194a2,2,0,0,1,0-4Z" transform="translate(-30.054 -270.04)" fill="#007d2d"/>
+                            <path d="M164.774,211.96l16.586,16.582a2,2,0,1,1-2.832,2.832l-18-18a2,2,0,0,1,0-2.832l18-18a2,2,0,1,1,2.832,2.832Z" fill="#007d2d"/>
+                        </g>
+                    </svg>
+                </div>
+                <h5 class="modal-title">Promoção</h5>            
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="21.5" height="21.5" viewBox="0 0 21.5 21.5">
+                        <g transform="translate(-1.25 -1.25)">
+                            <circle cx="10" cy="10" r="10" transform="translate(2 2)" fill="none" stroke="#007d2d" stroke-width="1.5"/>
+                            <path d="M14.5,9.5l-5,5m0-5,5,5" fill="none" stroke="#007d2d" stroke-linecap="round" stroke-width="1.5"/>
+                        </g>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="admin__add">
+                    <div class="admin__promocao-list">
+                        <div class="admin__search">
+                            <input type="text" id="searchItem" oninput="searchItems()" placeholder="Digite o nome">
+                            <button class="admin__search-btn" onclick="searchItems()">Pesquisar</button> ㅤ
+                            <button class="admin__searcha-btn" type="button" data-bs-toggle="modal" data-bs-target="#item">Cadastrar Item</button>
+                        </div> 
+                        <h3>Itens na Promoção</h3>
+                        <!-- Adição de botões de filtro por categoria -->
+                        <div class="category-buttons">
+                            <?php
+                            $sql_categories = "SELECT DISTINCT categoria_id, nome FROM categoria";
+                            $result_categories = $conn->query($sql_categories);
+                            echo '<button class="category-filter-btn" onclick="filterItems(0)">Mostrar Todos</button>';
+                            if ($result_categories->num_rows > 0) {
+                                while ($row_category = $result_categories->fetch_assoc()) {
+                                    $category_id = $row_category["categoria_id"];
+                                    $category_name = $row_category["nome"];
+                                    echo '<button class="category-filter-btn" onclick="filterItems(' . $category_id . ')">' . $category_name . '</button>';
+                                }
+                            }
+                            ?>
+                        </div>
+                        <ul id="itemList" style="list-style: none; padding: 0;">
+                            <?php
+                            $sql = "SELECT * FROM item WHERE promocao = 1";
+                            $result = $conn->query($sql);
+                            $counter = 1;
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    $itemId = $row["item_id"];
+                                    $itemName = $row["nome"];
+                                    $categoryId = $row["categoria_id"];
+                                    $itemValue = $row["valor"];
+                                    $itemStatus = $row["status_item"];
+                                    $itemDescription = $row["descricao"];
+                                    $itemPhoto = $row["foto"];
+                                    $photoPath = "img2/" . $itemPhoto;
+                                    $precoantigo = $row["valor_promocao"];
+                                    echo '<li class="item-item item-category-' . $categoryId . '" style="margin-bottom: 10px; padding: 10px; background-color: #f5f5f5; border-radius: 5px;">
+                                        <div class="item-preview">
+                                            <img src="' . $photoPath . '" alt="Foto do Item" style="max-width: 100px; max-height: 100px;" onclick="mostrarDetalhesItema(' . $itemId . ')">
+                                            <div class="item-info">
+                                                <h4>' . ucwords(strtolower($itemName)) . '</h4>
+                                                <h5>De: R$'. $precoantigo .' - Por: R$' . $itemValue . '</h5>
+                                                <button class="admin__delete-btn" onclick="deletePromocao(' . $itemId . ')">Remover Promoção</button>
+                                                <button class="admin__editar-btn" onclick="abrirFormularioPromocao(' . $itemId . ', \'' . $itemValue . ', \'' . $precoantigo . ');">Editar</button>
+
+                                            </div>                           
+                                        </div>
+                                    </li>';
+                                    $counter++;
+                                }
+                            } else {
+                                echo "<li>Nenhum item em promoção encontrado</li>";
+                            }
+                            ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function abrirFormularioPromocao(itemId, valorAtual, precoAntigo) {
+        var novoValor = prompt("Digite o novo valor:");
+
+        // Verificar se o novo valor é válido
+        if (novoValor !== null) {
+            novoValor = parseFloat(novoValor);
+
+            if (!isNaN(novoValor) && novoValor <= valorAtual) {
+                // Enviar solicitação de atualização ao servidor
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // Atualizar a página se a atualização for bem-sucedida
+                        location.reload();
+                    }
+                };
+                
+                // URL do arquivo PHP responsável pela atualização no banco de dados
+                var url = "promocao-edit.php?item_id=" + itemId + "&novo_valor=" + novoValor;
+                xmlhttp.open("GET", url, true);
+                xmlhttp.send();
+            } else {
+                alert("O novo valor deve ser menor ou igual ao valor atual.");
+            }
+        }
+    }
+</script>
+
+
+
+
+
 
     <div class="main">
         <div class="container">
-            <h1>Cadastrar itens</h1>
+            <h1>Cadastramento</h1>
             <div class="admin__add-item">
-                <button type="button" data-bs-toggle="modal" data-bs-target="#item">
-                    cadastrar-item
+                <button type="button" data-bs-toggle="modal" data-bs-target="#mostrar-item">
+                    Itens
+                </button>
+                <!-- <button type="button" data-bs-toggle="modal" data-bs-target="#cadastrar-cat">
+                    cadastrar-categoria
+                </button> -->
+                <button type="button" data-bs-toggle="modal" data-bs-target="#remov-cat">
+                    Categorias
+                </button>
+
+                <button type="button" data-bs-toggle="modal" data-bs-target="#promocao">
+                    Promoção
                 </button>
                 <button>
 
@@ -370,5 +686,280 @@ if(!$_SESSION["painel_administrador"]){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<script>
+    function deleteCategory(categoryId) {
+        if (confirm("Tem certeza de que deseja apagar esta categoria?")) {
+            $.ajax({
+                type: "POST",
+                url: "categoria-rem.php",
+                data: { delete_category: categoryId },
+                success: function(response) {
+                    $(".admin__category-list").load(location.href + " .admin__category-list>*", "");
+                },
+                error: function(xhr, status, error) {
+                    alert("Erro ao excluir categoria: " + xhr.responseText);
+                }
+            });
+        }
+    }
+</script>
+
+<script>
+    function deleteItem(itemId) {
+
+        if (confirm("Tem certeza de que deseja apagar este item?")) {
+            $.ajax({
+                type: "POST",
+                url: "item-rem.php",
+                data: { delete_item: itemId },
+                success: function(response) {
+                    $(".admin__itens-list").load(location.href + " .admin__itens-list>*", "");
+                },
+                error: function(xhr, status, error) {
+                    alert("Erro ao excluir item: " + xhr.responseText);
+                }
+            });
+        }
+    }
+
+
+</script>
+
+<script>
+    function deletePromocao(itemId) {
+
+        if (confirm("Tem certeza de que deseja apagar este item?")) {
+            $.ajax({
+                type: "POST",
+                url: "promocao-rem.php",
+                data: { promocao: itemId },
+                success: function(response) {
+                    $(".admin__promocao-list").load(location.href + " .admin__promocao-list>*", "");
+                },
+                error: function(xhr, status, error) {
+                    alert("Erro ao excluir item: " + xhr.responseText);
+                }
+            });
+        }
+    }
+
+
+</script>
+
+
+<script>
+    function editCategory(categoryId) {
+        // Coleta os novos dados da categoria usando um formulário ou de outra maneira
+        var novoNome = prompt("Digite o novo nome da categoria:");
+
+        // Verifica se o usuário inseriu um novo nome
+        if (novoNome !== null) {
+            // Use jQuery para enviar uma solicitação AJAX para edit-categoria.php
+            $.ajax({
+                type: "POST",
+                url: "categoria-edit.php",
+                data: {
+                    edit_category: categoryId,
+                    novo_nome: novoNome
+                },
+                success: function(response) {                  
+                    // Redirecione para administrador-painel.php após a edição bem-sucedida
+                    $(".admin__category-list").load(location.href + " .admin__category-list>*", "");
+                },
+                error: function(xhr, status, error) {
+                    // Exiba um alerta em caso de erro
+                    alert("Erro ao editar categoria: " + xhr.responseText);
+                }
+            });
+        }
+    }
+</script>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- Adicione essas linhas no head do seu HTML -->
+<script>
+    function abrirFormularioEdicao(itemId, itemName, itemValue, itemDescription, itemStatus, categoryId, itemPhoto) {
+        var modalId = "formularioEdicaoModal_" + itemId;
+
+        // Remove o modal antigo se existir
+        $("#" + modalId).remove();
+
+        var formularioEdicao = `
+            <div class="modal fade" id="${modalId}" tabindex="-1" role="dialog" aria-labelledby="${modalId}Label" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content text-center mx-auto">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="${modalId}Label">Editar Item</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="formularioEdicao">
+                                <label for="novoNome">Nome:</label>
+                                <input type="text" id="novoNome" value="${itemName}" class="form-control">
+                                <br>
+
+                                <label for="novoValor">Valor:</label>
+                                <input type="number" id="novoValor" value="${itemValue}" class="form-control">
+                                <br>
+
+                                <label for="novaDescricao">Descrição:</label>
+                                <textarea id="novaDescricao" class="form-control">${itemDescription}</textarea>
+                                <br>
+
+                                <label for="novoStatus">Status:</label>
+                                <select id="novoStatus" class="form-control">
+                                    <option value="1" ${itemStatus == 1 ? 'selected' : ''}>Disponível</option>
+                                    <option value="0" ${itemStatus == 0 ? 'selected' : ''}>Indisponível</option>
+                                </select>
+                                <br>
+
+                                <label>Foto Atual:</label>
+                                <img src="img2/${itemPhoto}" alt="Foto Atual" style="max-width: 100px; max-height: 100px;">
+                                <br>
+
+                                <label for="novaFoto">Nova Foto:</label>
+                                <input type="file" id="novaFoto" accept="image/*" class="form-control-file">
+                                <br>
+
+                                <button type="button" class="btn btn-primary" onclick="enviarEdicao(${itemId}, '${itemPhoto}')">Salvar Edições</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Exibe o modal na página
+        $('body').append(formularioEdicao);
+
+        // Abre o modal usando JavaScript
+        $('#' + modalId).modal('show');
+    }
+    function enviarEdicao(itemId, fotoAntiga) {
+        // Coleta os novos dados do formulário de edição
+        var novoNome = document.getElementById('novoNome').value;
+        var novoValor = document.getElementById('novoValor').value;
+        var novaDescricao = document.getElementById('novaDescricao').value;
+        var novoStatus = document.getElementById('novoStatus').value;
+        var novaFoto = document.getElementById('novaFoto').files[0];
+
+        // Use FormData para lidar com o envio de arquivos
+        var formData = new FormData();
+        formData.append('edit_item', itemId);
+        formData.append('novo_nome', novoNome);
+        formData.append('novo_valor', novoValor);
+        formData.append('nova_descricao', novaDescricao);
+        formData.append('novo_status', novoStatus);
+        formData.append('nova_foto', novaFoto);
+
+        // Use jQuery para enviar uma solicitação AJAX para editar-item.php (substitua pelo seu arquivo de backend)
+        $.ajax({
+            type: "POST",
+            url: "item-edit.php", // Substitua pelo seu arquivo de backend
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                // Recarregue a lista de itens após a edição bem-sucedida
+                $("#itemList").load(location.href + " #itemList>*", "");
+                // Esconda o modal após o salvamento
+                $('#formularioEdicaoModal_' + itemId).modal('hide');
+                // Mostrar uma notificação (substitua por sua lógica de notificação)
+            },
+            error: function(xhr, status, error) {
+                // Exiba um alerta em caso de erro
+                alert("Erro ao editar item: " + xhr.responseText);
+            }
+        });
+    }
+</script>
+
+
+
+
+<script>
+    function searchCategories() {
+        var input, filter, ul, li, categoryName, i, txtValue;
+        input = document.getElementById('searchCategory');
+        filter = input.value.toUpperCase();
+        ul = document.querySelector('.admin__category-list ul');
+        li = ul.getElementsByTagName('li');
+
+        for (i = 0; i < li.length; i++) {
+            categoryName = li[i].textContent || li[i].innerText;
+
+            if (categoryName.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = '';
+            } else {
+                li[i].style.display = 'none';
+            }
+        }
+    }
+</script>
+
+<script>
+    function filterItems(categoryId) {
+        var itemList = document.getElementById("itemList");
+        var items = itemList.getElementsByClassName("item-item");
+        
+        for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            var categories = item.className.match(/item-category-\d+/);
+            
+            if (categories) {
+                categories = categories[0].split("-")[2];
+                
+                if (categories == categoryId || categoryId == 0) {
+                    item.style.display = "";
+                } else {
+                    item.style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+<?php
+function atualizarcategoria() {
+    echo '<script>
+            window.onload = function() {
+                var myModal = new bootstrap.Modal(document.getElementById("remov-cat"));
+                myModal.show();
+                $(".admin__category-list").load(location.href + " .admin__category-list>*", "");
+            };
+        </script>';
+}
+
+function atualizaritens() {
+    echo '<script>
+            window.onload = function() {
+                var myModal = new bootstrap.Modal(document.getElementById("mostrar-item"));
+                myModal.show();
+                $(".admin__itens-list").load(location.href + " .admin__itens-list>*", "");
+            };
+        </script>';
+}
+
+function atualizarpromocao() {
+    echo '<script>
+            window.onload = function() {
+                var myModal = new bootstrap.Modal(document.getElementById("promocao"));
+                myModal.show();
+                $(".admin__promocao-list").load(location.href + " .admin__promocao-list>*", "");
+            };
+        </script>';
+}
+?>
+
+
+
+
+
+
     
 <?php } ?>

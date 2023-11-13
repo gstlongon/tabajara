@@ -3,18 +3,9 @@ $servername = "localhost:3306";
 $username = "root";
 $password = "";
 $database = "tabajara";
-try{
-    $conn = new mysqli($servername, $username, $password, $database);
+$conn = new mysqli($servername, $username, $password, $database);
 
+if ($conn->connect_error) {
+    die("Erro na conexão com o banco de dados: " . $conn->connect_error);
 }
-
-
-catch(Exception $e){
-    $msg=array("codigo"=>0,"texto"=>"Erro de conexão.");
-    header('Content-Type: application/json; charset=utf-8');
-    echo(json_encode($msg));
-    exit;
-     
-}
-
 ?>
