@@ -175,7 +175,7 @@ if(!$_SESSION["painel_administrador"]){
     </div>    
 
 
-    <style>
+<style>
     .admin__delete-btn {
         background-color: #ff4d4d;
         color: #fff;
