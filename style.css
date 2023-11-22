@@ -373,6 +373,7 @@ ul {
     height:40px;
     line-height:40px;
     border-radius: 5px;
+    border: none;
     background: linear-gradient(to right, #f51313, #f51313, #f51313, #007d2d, #007d2d, #007d2d);
     background-size: 230% 100%;
     background-position: 0 0;

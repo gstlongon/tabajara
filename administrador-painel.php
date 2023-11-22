@@ -46,7 +46,7 @@ if(!$_SESSION["painel_administrador"]){
                     </div>
                     <ul class="nav__list">
                         <li class="nav__item">
-                            <a class="nav__btn" href="index.php">
+                            <a class="nav__btn" href="index.html">
                                 Voltar para loja
                             </a>
                     </ul>
