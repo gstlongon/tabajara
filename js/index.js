@@ -118,6 +118,10 @@ class Index {
                 console.log(categoria);
                 this.displayItems(categoria);
             });
+
+            button.addEventListener('change', () => {
+                button.classList.add('active')
+            })
         });
     }
     
@@ -125,7 +129,6 @@ class Index {
         const cartItems = document.querySelector('.cart-items');
         const cartTotal = document.getElementById('cart-total');
         const cartItemsVerificacao = document.querySelector('.cart-items');
-    
         cartItems.innerHTML = '';
     
         let newTotal = 0; 

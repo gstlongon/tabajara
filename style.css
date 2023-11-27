@@ -517,8 +517,6 @@ ul {
     animation: mrtabajara 2s ease-in-out infinite;
 }
 
-/* ========ADMIN====== */
-
 
 
 /* ===========MODAL========== */
@@ -937,10 +935,55 @@ ul {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    text-transform: capitalize;
 }
 
 .category-filter-btn:hover {
     background-color: #005226;
+}
+
+.detalhes {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+}
+
+.detalhes__label {
+    font-weight: bold;
+    color: #005226;
+}
+
+.detalhes__label,
+.detalhes__value {
+    line-height: 30px;
+}
+
+.item-title {
+    text-align: center;
+}
+
+.item-box {
+    width: 200px;
+    height: 200px;
+    margin: 15px auto;
+}
+
+.item-img {
+    width: 100%;
+    height: 100% !important;
+    object-fit: contain;
+    height: auto;
+    display: block;
+    cursor: pointer;
+}
+
+.item-info {
+    display: flex;
+    justify-content: center;
+}
+
+.admin__delete-btn {
+    margin-right: 20px;
 }
 
 .admin__add-item {
@@ -958,10 +1001,109 @@ ul {
     box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.5);
 }
 
+.admin__category-list h3,
+.admin__itens-list h3 {
+    margin: 15px 0 30px!important;
+}
+
+.admin__list-edit {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.admin__editar-categoria {
+    width: 100%;
+    max-width: 110px;
+}
+
 .admin__painel-img {
     width: 100%;
     height: auto;
 }
+
+
+.card-container {
+    display: flex;
+    flex: 300px;
+    margin: 30px;
+}
+
+.card {
+    font-weight: bold;
+    position: relative;
+    width: 100%;
+}
+
+.card a {
+    padding: 30px;
+    width: 100%;
+    height: 400px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background: white;
+    text-decoration: none;
+    color: black;
+    display: block;
+    transition: 0.25s ease;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.4);
+}
+
+.card a:hover {
+    transform: translate(-30px, -30px);
+    border-color: #007d2d;
+}
+
+.card a:hover .card--display {
+    display: none;
+}
+
+.card a:hover .card--hover {
+    display: block;
+}
+
+.card a .card--display i {
+    font-size: 60px;
+    margin-top: 200px;
+}
+
+.card a .card--display h2 {
+    margin: 20px 0 0;
+}
+
+.card a .card--hover {
+    display: none;
+}
+
+.card a .card--hover h2 {
+    margin: 20px 0;
+}
+
+.card a .card--hover p {
+    font-weight: normal;
+    line-height: 1.5;
+}
+
+.card a .card--hover button {
+    border: none;
+    background-color: transparent;
+    margin: 20px 0 0;
+    font-weight: bold;
+    color: #007d2d;
+}
+
+.card a .card--border {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border: 2px dashed black;
+    z-index: -1;
+}
+
+
+
 
 
 
@@ -1098,6 +1240,27 @@ ul {
    }
 }
 
+
+/* ==========================================================================
+   = breakpoint
+   ========================================================================== */
+
+
+   @media screen and (max-width: 991px) {
+
+
+    /* ========ADMIN======= */
+
+    .admin__painel-img {
+        width: 60%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+   }
+
+
 /* ==========================================================================
    = breakpoint
    ========================================================================== */
@@ -1196,6 +1359,8 @@ ul {
     .nav__list .nav__btn::before {
         left: 0;
     }
+
+
 
     /* ===========INDEX=========== */
 
