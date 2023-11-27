@@ -59,117 +59,30 @@ class Index {
             video.playbackRate = 0.5
         })
     }
-
-    // filter() {
-    //     const areaPizza = document.querySelector('.index__pizza-area')
-    //     const areaLanche = document.querySelector('.index__burguer-area')
-    //     const areaSobremesa = document.querySelector('.index__sobremesas-area')
-    //     const areaPratos = document.querySelector('.index__pratos-area')
-    //     const areaBebidas = document.querySelector('.index__bebidas-area')
-
-    //     const btnPizza = document.querySelector('.index__btn-pizza')
-    //     const btnLanche = document.querySelector('.index__btn-lanche')
-    //     const btnSobremesa = document.querySelector('.index__btn-sobremesas')
-    //     const btnPratos = document.querySelector('.index__btn-pratos')
-    //     const btnBebidas = document.querySelector('.index__btn-bebidas')
-
-
-
-    //     btnPizza.addEventListener('click', () => {
-    //         areaPizza.classList.add('active')
-    //         areaLanche.classList.remove('active')
-    //         areaSobremesa.classList.remove('active')
-    //         areaPratos.classList.remove('active')
-    //         areaBebidas.classList.remove('active')
-
-    //         btnPizza.classList.add('active')
-    //         btnLanche.classList.remove('active')
-    //         btnSobremesa.classList.remove('active')
-    //         btnPratos.classList.remove('active')
-    //         btnBebidas.classList.remove('active')
-
-    //     })
-
-    //     btnLanche.addEventListener('click', () => {
-    //         areaPizza.classList.remove('active')
-    //         areaLanche.classList.add('active')
-    //         areaSobremesa.classList.remove('active')
-    //         areaPratos.classList.remove('active')
-    //         areaBebidas.classList.remove('active')
-
-    //         btnPizza.classList.remove('active')
-    //         btnLanche.classList.add('active')
-    //         btnSobremesa.classList.remove('active')
-    //         btnPratos.classList.remove('active')
-    //         btnBebidas.classList.remove('active')
-
-    //     })
-
-    //     btnSobremesa.addEventListener('click', () => {
-    //         areaPizza.classList.remove('active')
-    //         areaLanche.classList.remove('active')
-    //         areaSobremesa.classList.add('active')
-    //         areaPratos.classList.remove('active')
-    //         areaBebidas.classList.remove('active')
-
-    //         btnPizza.classList.remove('active')
-    //         btnLanche.classList.remove('active')
-    //         btnSobremesa.classList.add('active')
-    //         btnPratos.classList.remove('active')
-    //         btnBebidas.classList.remove('active')
-
-    //     })
-
-    //     btnPratos.addEventListener('click', () => {
-    //         areaPizza.classList.remove('active')
-    //         areaLanche.classList.remove('active')
-    //         areaSobremesa.classList.remove('active')
-    //         areaPratos.classList.add('active')
-    //         areaBebidas.classList.remove('active')
-
-    //         btnPizza.classList.remove('active')
-    //         btnLanche.classList.remove('active')
-    //         btnSobremesa.classList.remove('active')
-    //         btnPratos.classList.add('active')
-    //         btnBebidas.classList.remove('active')
-
-    //     })
-
-    //     btnBebidas.addEventListener('click', () => {
-    //         areaPizza.classList.remove('active')
-    //         areaLanche.classList.remove('active')
-    //         areaSobremesa.classList.remove('active')
-    //         areaPratos.classList.remove('active')
-    //         areaBebidas.classList.add('active')
-
-    //         btnPizza.classList.remove('active')
-    //         btnLanche.classList.remove('active')
-    //         btnSobremesa.classList.remove('active')
-    //         btnPratos.classList.remove('active')
-    //         btnBebidas.classList.add('active')
-
-    //     })
-    // }
-
   
-
-    async displayItems() {
-        const response = await fetch('itens.php');
+    async displayItems(categoria) {
+    if (categoria == undefined){
+        categoria = 'pizzas'     
+    }else{
+        categoria = categoria
+    }
+        console.log(categoria);
+        const response = await fetch(`itens.php?categoria_nome=${categoria}`);
         const fetchedItems = await response.json();
-    
         const itemsContainer = document.querySelector('.index__item-area');
         itemsContainer.innerHTML = ''; 
     
         fetchedItems.forEach((item, index) => {
             let itemElement = document.createElement('div');
-            itemElement.classList.add('col-3'); 
-    
+            itemElement.classList.add('col-xl-3', 'col-lg-4', 'col-md-6', 'col-xs-12');
             itemElement.innerHTML = `
                 <div class="index__item">
                     <div class="index__item--img"><img src="img2/${item.foto}" alt=""></div>
                     <div class="index__item--price">R$ ${item.valor}</div>
                     <div class="index__item--name">${item.nome}</div>
                     <div class="index__item--desc">${item.descricao}</div>
+                    <div class="index__sale"><img src="img/promotion.png" alt=""></div>
+
                     <button class="index__item--add">Adicionar</button>
                 </div>
                 
@@ -190,10 +103,21 @@ class Index {
                 console.log(this.cartItems.length);
             });
     
-            // if (item.status_item === '1') {
-            //     const sale = itemElement.querySelector('.index__item .index__sale');
-            //     sale.classList.add('active');
-            // }
+            if (item.promocao === '1') {
+                const sale = itemElement.querySelector('.index__item');
+                sale.classList.add('active');
+            }
+        });
+    }
+
+    filterItems() {
+        const buttons = document.querySelectorAll('.index__btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const categoria = button.getAttribute('data-categoria');
+                console.log(categoria);
+                this.displayItems(categoria);
+            });
         });
     }
     
@@ -228,7 +152,7 @@ class Index {
     
             const itemPrice = parseFloat(item.valor);
             console.log('preco:', itemPrice);
-            newTotal += itemPrice; // Acumula o preço do item ao total
+            newTotal += itemPrice; 
     
             const removeItemButton = cartItem.querySelector('.card__trash');
             removeItemButton.addEventListener('click', () => {
@@ -466,6 +390,7 @@ class Index {
         this.steps()
         this.btnClear()
         this.countCart()
+        this.filterItems();
         this.startCounterAnimation()
         console.log(this.cartItems)
         console.log('hello')

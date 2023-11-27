@@ -13,7 +13,7 @@ body {
     background: linear-gradient(to bottom, #ffffff, #fbffce, #fffff4 );
     font-family: 'Poppins', sans-serif;
     max-width: 1920px;
-    margin: 0 auto;
+    margin: 0 auto !important;
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
@@ -330,7 +330,7 @@ ul {
     transform: translateX(-50%);
 }
 
-.index__sale.active {
+.index__item.active .index__sale {
     display: block;
     animation: float 4s ease-in-out infinite;
 }
@@ -516,6 +516,10 @@ ul {
 .index__benefit-img.active {
     animation: mrtabajara 2s ease-in-out infinite;
 }
+
+/* ========ADMIN====== */
+
+
 
 /* ===========MODAL========== */
 
@@ -862,13 +866,105 @@ ul {
     top: 30px;
 }
 
+.admin__delete-btn {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admin__delete-btn:hover {
+    background-color: #4424;
+}
+
+.admin__search-btn {
+    background-color: #00008b;
+    color: #fff;
+    border: none;
+    padding: 3px 6px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admin__search-btn:hover {
+    background-color: #4424;
+}
+
+.admin__searcha-btn {
+    background-color: #20b2aa;
+    color: #000;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admin__searcha-btn:hover {
+    background-color: #4424;
+}
+
+.admin__editar-btn {
+    background-color: #00008b;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admin__editar-btn:hover {
+    background-color: #4424;
+}
+
+.category-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    overflow-x: auto; 
+}
+
+.category-filter-btn {
+    background-color: #007d2d;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.category-filter-btn:hover {
+    background-color: #005226;
+}
 
 .admin__add-item {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
     margin-top: 40px;
 }
+
+.admin__painel-btn {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.5);
+}
+
+.admin__painel-img {
+    width: 100%;
+    height: auto;
+}
+
+
+
 
 
 
@@ -879,7 +975,7 @@ ul {
     height: auto;
     position: relative;
     border-top: 2px solid #007d2d;
-    background-color: rgba(0, 0, 0, .3);
+    background: linear-gradient(to right, #ffffff, #eff5a5, #fdfca7);
     margin-top: 60px;
 }
 
