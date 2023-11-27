@@ -4,14 +4,17 @@ require_once('administrador-painel.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete_category"])) {
     $deletedCategory = $_POST["delete_category"];
-    
-    $sql = "DELETE FROM categoria WHERE categoria_id = $deletedCategory";
-    if ($conn->query($sql) === TRUE) {
-        // Exclusão bem-sucedida
-        header("Location: administrador-painel.php");
+
+    $deleteItemsSQL = "DELETE FROM item WHERE categoria_id = $deletedCategory";
+    if ($conn->query($deleteItemsSQL) === TRUE) {
+        $deleteCategorySQL = "DELETE FROM categoria WHERE categoria_id = $deletedCategory";
+        if ($conn->query($deleteCategorySQL) === TRUE) {
+            header("Location: administrador-painel.php");
+        } else {
+            echo "Erro ao excluir categoria: " . $conn->error;
+        }
     } else {
-        // Erro na exclusão
-        echo "Erro ao excluir categoria: " . $conn->error;
+        echo "Erro ao excluir itens relacionados à categoria: " . $conn->error;
     }
 }
 ?>

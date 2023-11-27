@@ -255,7 +255,7 @@ if(!$_SESSION["painel_administrador"]){
                         </g>
                     </svg>
                 </div>
-                <h5 class="modal-title">Itens Registrados</h5>            
+                <h5 class="modal-title">Produtos</h5>            
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <svg xmlns="http://www.w3.org/2000/svg" width="21.5" height="21.5" viewBox="0 0 21.5 21.5">
                         <g transform="translate(-1.25 -1.25)">
@@ -269,11 +269,11 @@ if(!$_SESSION["painel_administrador"]){
                 <div class="admin__add">
                     <div class="admin__itens-list">
                         <div class="admin__search">
-                            <!-- <input type="text" id="searchItem" oninput="searchItems()" placeholder="Digite o nome">
-                            <button class="admin__search-btn" onclick="searchItems()">Pesquisar</button> ㅤ -->
+                            <input type="text" id="searchItem" oninput="searchItems()" placeholder="Digite o nome">
+                            <button class="admin__search-btn" onclick="searchItems()">Pesquisar</button> ㅤ
                             <button class="admin__searcha-btn" type="button" data-bs-toggle="modal" data-bs-target="#item">Cadastrar Item</button>
                         </div> 
-                        <h3>Itens Registrados</h3>
+                        <h3>Produtos por Categorias</h3>
                         <div class="category-buttons">
                             <?php
                             $sql_categories = "SELECT DISTINCT categoria_id, nome FROM categoria";
@@ -302,15 +302,26 @@ if(!$_SESSION["painel_administrador"]){
                                     $itemStatus = $row["status_item"];
                                     $itemDescription = $row["descricao"];
                                     $itemPhoto = $row["foto"];
+                                    $precoantigo = $row["valor_promocao"];
+                                    $itemPromotion = $row["promocao"];
                                     $photoPath = "img2/" . $itemPhoto;
+                                    $promoIndicator = ($itemPromotion == 1) ? '<span class="promocao-indicador">Promoção Ativa</span>' : ''; 
+                                    if ($itemPromotion == 1){
+                                        $precoitem = 'De '. $precoantigo .' Por '. $itemValue;
+                                        $promocaosaber = 'Promoção 🟩';
+                                    }else{
+                                        $precoitem = $itemValue;
+                                        $promocaosaber = 'Promoção 🟥';
+                                    }                                   
                                     echo '<li class="item-item item-category-' . $categoryId . '" style="margin-bottom: 10px; padding: 30px; background-color: #f5f5f5; border-radius: 5px;">
                                     <div class="item-preview">
                                             <h4 class="item-title">' . ucwords(strtolower($itemName)) . '</h4> 
                                             <div class="item-box"><img class="item-img" src="' . $photoPath . '" alt="Foto do Item" onclick="mostrarDetalhesItem(' . $itemId . ')"></div>
                                             <div class="item-info">
                                                 <button class="admin__delete-btn" onclick="deleteItem(' . $itemId . ')">Apagar</button>
-                                                <button class="admin__editar-btn" onclick="abrirFormularioEdicao(' . $itemId . ', \'' . $itemName . '\', ' . $itemValue . ', \'' . $itemDescription . '\', ' . $itemStatus . ', ' . $categoryId . ', \'' . $itemPhoto . '\');">Editar</button>
-                                            </div>                           
+                                                <button class="admin__editar-btn" onclick="abrirFormularioEdicao(' . $itemId . ', \'' . $itemName . '\', ' . $itemValue . ', \'' . $itemDescription . '\', ' . $itemStatus . ', ' . $categoryId . ', \'' . $itemPhoto . '\', \'' . $itemPromotion . '\');">Editar</button>
+                                                <button class="admin__promocao-btn" onclick="abrirFormularioEdicaoPromocao(' . $itemId . ', \'' . $itemName . '\', ' . $itemValue . ', ' . $itemPromotion . ', \'' . $itemPhoto . '\', \'' . $precoantigo . '\');">'.$promocaosaber.'</button>
+                                             </div>                           
                                         </div>' ?>
                                         <div class="detalhes" id="detalhesItem<?php echo $itemId; ?>" style="display: none;">
 
@@ -321,7 +332,7 @@ if(!$_SESSION["painel_administrador"]){
                                             <span class="detalhes__value"><?php echo getCategoryName($categoryId, $conn); ?></span><br>
 
                                             <span class="detalhes__label">Valor: </span>
-                                            <span class="detalhes__value"><?php echo $itemValue; ?></span><br>
+                                            <span class="detalhes__value"><?php echo $precoitem; ?></span><br>
 
                                             <span class="detalhes__label">Status: </span>
                                             <span class="detalhes__value"><?php echo ($itemStatus == 1 ? 'Disponível' : 'Indisponível'); ?></span><br>
@@ -434,7 +445,6 @@ if(!$_SESSION["painel_administrador"]){
                             <button class="admin__searcha-btn" type="button" data-bs-toggle="modal" data-bs-target="#item">Cadastrar Item</button>
                         </div> 
                         <h3>Itens na Promoção</h3>
-                        <!-- Adição de botões de filtro por categoria -->
                         <div class="category-buttons">
                             <?php
                             $sql_categories = "SELECT DISTINCT categoria_id, nome FROM categoria";
@@ -504,11 +514,13 @@ if(!$_SESSION["painel_administrador"]){
                                 </div>
 
                                 <div class="card--hover">
-                                    <h2>Adicionar Produto</h2>
+                                    <h2>Menu Produto</h2>
                                     <p>
                                         Aqui é seu controle dos Produtos do cardápio você pode:<br>
                                        <strong>Adicionar</strong><br>
-                                       <strong>Editar</strong>
+                                       <strong>Editar</strong><br>
+                                       <strong>Remover</strong><br>
+                                       <strong>Promoção</strong>
                                         
                                     </p>
                                     <button class="" type="button" data-bs-toggle="modal" data-bs-target="#mostrar-item">
@@ -529,10 +541,11 @@ if(!$_SESSION["painel_administrador"]){
                                 <img class="admin__painel-img" src="img/card-category.jpg" alt="Seleção de comidas">
                             </div>
                             <div class="card--hover">
-                                <h2>Adicionar Categoria</h2>
+                                <h2>Menu Categoria</h2>
                                 <p>
                                     Aqui é seu controle das categorias do cardapio você pode:<br>
                                     <strong>Adicionar</strong><br>
+                                    <strong>Remover</strong><br>
                                     <strong>Editar</strong>
                                 </p>
                                 <button class="" type="button" data-bs-toggle="modal" data-bs-target="#remov-cat">
@@ -587,28 +600,6 @@ if(!$_SESSION["painel_administrador"]){
 <script src="js/painel.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script>
-    function abrirFormularioPromocao(itemId, valorAtual, precoAntigo) {
-        var novoValor = prompt("Digite o novo valor:");
-
-        if (novoValor !== null) {
-            novoValor = parseFloat(novoValor);
-
-            if (!isNaN(novoValor) && novoValor <= valorAtual) {
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
-                        location.reload();
-                    }
-                };
-                
-                var url = "promocao-edit.php?item_id=" + itemId + "&novo_valor=" + novoValor;
-                xmlhttp.open("GET", url, true);
-                xmlhttp.send();
-            } else {
-                alert("O novo valor deve ser menor ou igual ao valor atual.");
-            }
-        }
-    }
 
     function mostrarDetalhesItem(itemId) {
         var detalhesItem = document.getElementById('detalhesItem' + itemId);
@@ -620,7 +611,7 @@ if(!$_SESSION["painel_administrador"]){
     }
 
     function deleteCategory(categoryId) {
-        if (confirm("Tem certeza de que deseja apagar esta categoria?")) {
+        if (confirm("Tem certeza de que deseja apagar esta categoria? Junto ira apagar todos os itens com essa Categoria")) {
             $.ajax({
                 type: "POST",
                 url: "categoria-rem.php",
@@ -688,10 +679,128 @@ if(!$_SESSION["painel_administrador"]){
         }
     }
 
-    function abrirFormularioEdicao(itemId, itemName, itemValue, itemDescription, itemStatus, categoryId, itemPhoto) {
+    function abrirFormularioEdicaoPromocao(itemId, itemName, itemValue, itemPromotion, itemPhoto, precoantigo) {
+        itemValue = parseFloat(itemValue);
+        var modalId = "formularioEdicaoPromocaoModal_" + itemId;
+        $("#" + modalId).remove();
+
+        var formularioEdicaoPromocao = `
+            <div class="modal fade" id="${modalId}" tabindex="-1" role="dialog" aria-labelledby="${modalId}Label" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content text-center mx-auto">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="${modalId}Label">Editar Promoção</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="formularioEdicaoPromocao">
+                                ${itemPromotion == 1 ?
+                                    `<p><h5>Este item possui promoção:</h5></p>
+                                    <p><h4>${itemName}</h4></p>
+                                    <img src="img2/${itemPhoto}" alt="Foto do Item" style="max-width: 100px; max-height: 100px;">
+                                    <p><h6>Valor Original: </h6> <h5>R$ ${precoantigo}</h5></p>
+                                    <p><h6>Valor Promoção: </h6> <h5>R$ ${itemValue}</h5></p>
+                                    <label for="novoValorPromocao"><h6>Valor da Promoção editado:</h6></label>
+                                    <input type="number" id="novoValorPromocao" min="0" max = "" value="${itemValue}" class="form-control">
+                                    <br>
+                                    <button type="button" class="btn btn-success" onclick="editarPromocao(${itemId})">Editar Preço</button>
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn btn-danger" onclick="removerPromocao(${itemId})">Remover Promoção</button>`
+                                    :
+                                    `<p><h5>Este item ainda não possui promoção:</h5></p>
+                                    <p><h4>${itemName}</h4></p>
+                                    <img src="img2/${itemPhoto}" alt="Foto do Item" style="max-width: 100px; max-height: 100px;">
+                                    <p><h6>Valor Atual: </h6> <h5>R$ ${itemValue}</h5></p>
+                                    <label for="novoValorPromocao"><h6>Valor da Promoção:</h6></label>
+                                    <input type="number" id="novoValorPromocao" min="0" value="${itemValue}" class="form-control">
+                                    <br>
+                                    <button type="button" class="btn btn-success" onclick="adicionarPromocao(${itemId})">Adicionar Promoção</button>`
+                                }
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        $('body').append(formularioEdicaoPromocao);
+
+        $('#' + modalId).modal('show');
+    }
+
+    function adicionarPromocao(itemId) {
+        var novoValorPromocao = document.getElementById('novoValorPromocao').value;
+        $.ajax({
+            type: "POST",
+            url: "promocao-add.php", 
+            data: { itemId: itemId, novoValorPromocao: novoValorPromocao },
+            success: function(response) {
+                $("#itemList").load(location.href + " #itemList>*", "");
+            },
+            error: function(xhr, status, error) {
+                alert("Erro ao excluir item: " + xhr.responseText);
+            }
+        });
+
+        $('#formularioEdicaoPromocaoModal_' + itemId).modal('hide');
+    }
+
+    function editarPromocao(itemId) {
+        var novoValorPromocao = document.getElementById('novoValorPromocao').value;
+        $.ajax({
+            type: "POST",
+            url: "promocao-edit.php", 
+            data: { itemId: itemId, novoValorPromocao: novoValorPromocao },
+            success: function(response) {
+                $("#itemList").load(location.href + " #itemList>*", "");
+            },
+            error: function(xhr, status, error) {
+                alert("Erro ao editar: " + xhr.responseText);
+            }
+        });
+
+        $('#formularioEdicaoPromocaoModal_' + itemId).modal('hide');
+    }
+
+    function removerPromocao(itemId) {
+        if (confirm("Tem certeza de que deseja apagar este item?")) {
+            $.ajax({
+                type: "POST",
+                url: "promocao-rem.php", 
+                data: { promocao: itemId },
+                success: function(response) {
+                    $("#itemList").load(location.href + " #itemList>*", "");
+                },
+                error: function(xhr, status, error) {
+                    alert("Erro ao excluir item: " + xhr.responseText);
+                }
+            });
+            $('#formularioEdicaoPromocaoModal_' + itemId).modal('hide');
+        }
+    }
+
+
+    function abrirFormularioEdicao(itemId, itemName, itemValue, itemDescription, itemStatus, categoryId, itemPhoto, itemPromotion) {
         var modalId = "formularioEdicaoModal_" + itemId;
 
         $("#" + modalId).remove();
+
+        var valorField = '';
+        if (itemPromotion == 1) {
+            valorField = `
+                <label for="novoValor">Valor:</label>
+                <input type="text" id="novoValor" value="A PROMOÇÃO DESSE ITEM ESTÁ ATIVA, Valor: R$ ${itemValue}" class="form-control" readonly>
+                <input type="hidden" id="valorPromocao" value="${itemValue}">
+                <br>`;
+        } else {
+            valorField = `
+                <label for="novoValor">Valor:</label>
+                <input type="number" id="novoValor" value="${itemValue}" class="form-control">
+                <br>`;
+        }
 
         var formularioEdicao = `
             <div class="modal fade" id="${modalId}" tabindex="-1" role="dialog" aria-labelledby="${modalId}Label" aria-hidden="true">
@@ -708,13 +817,16 @@ if(!$_SESSION["painel_administrador"]){
                                 <label for="novoNome">Nome:</label>
                                 <input type="text" id="novoNome" value="${itemName}" class="form-control">
                                 <br>
-
-                                <label for="novoValor">Valor:</label>
-                                <input type="number" id="novoValor" value="${itemValue}" class="form-control">
-                                <br>
+                                
+                                ${valorField} <!-- Incluir o campo de valor condicionalmente -->
 
                                 <label for="novaDescricao">Descrição:</label>
                                 <textarea id="novaDescricao" class="form-control">${itemDescription}</textarea>
+                                <br>
+                                <label for="novoCategoria">Categoria:</label>
+                                <select class="admin__select" id="novoCategoria_${itemId}" name="novo_categoria">
+                                    <option class="admin__select-value" value="" disabled selected hidden>Carregando categorias...</option>
+                                </select>
                                 <br>
 
                                 <label for="novoStatus">Status:</label>
@@ -742,6 +854,21 @@ if(!$_SESSION["painel_administrador"]){
 
         $('body').append(formularioEdicao);
 
+        $.ajax({
+            url: 'item-categoria.php',
+            type: 'GET',
+            data: {
+                item_category_id: categoryId
+            },
+            success: function(response) {
+                $(`#novoCategoria_${itemId}`).empty();
+                $(`#novoCategoria_${itemId}`).append(response);
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+
         $('#' + modalId).modal('show');
     }
 
@@ -749,6 +876,7 @@ if(!$_SESSION["painel_administrador"]){
         var novoNome = document.getElementById('novoNome').value;
         var novoValor = document.getElementById('novoValor').value;
         var novaDescricao = document.getElementById('novaDescricao').value;
+        var novoCategoria = document.getElementById('novoCategoria_' + itemId).value;
         var novoStatus = document.getElementById('novoStatus').value;
         var novaFoto = document.getElementById('novaFoto').files[0];
 
@@ -757,8 +885,10 @@ if(!$_SESSION["painel_administrador"]){
         formData.append('novo_nome', novoNome);
         formData.append('novo_valor', novoValor);
         formData.append('nova_descricao', novaDescricao);
+        formData.append('novo_categoria', novoCategoria);
         formData.append('novo_status', novoStatus);
         formData.append('nova_foto', novaFoto);
+        console.log(novoCategoria);
 
         $.ajax({
             type: "POST",
@@ -813,6 +943,24 @@ if(!$_SESSION["painel_administrador"]){
             }
         }
     }
+
+    function searchItems() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById('searchItem');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("itemList");
+        li = ul.getElementsByTagName('li');
+
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByClassName("item-title")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
 </script>
 </body>
 </html>
@@ -834,6 +982,15 @@ if(!$_SESSION["painel_administrador"]){
                     var myModal = new bootstrap.Modal(document.getElementById("mostrar-item"));
                     myModal.show();
                     $(".admin__itens-list").load(location.href + " .admin__itens-list>*", "");
+                };
+            </script>';
+    }
+
+    function fecharitens() {
+        echo '<script>
+                window.onload = function() {
+                    var myModal = new bootstrap.Modal(document.getElementById("mostrar-item"));
+                    myModal.hide()
                 };
             </script>';
     }

@@ -1,6 +1,0 @@
-com exemplo nesse codigo que te mandei a cima, faça outro copiando a ideia dele..
-quero que você mostre os itens que estao com a promocao ativa, que no caso quando tiver 1 na 'promocao' no sql, caso tiver 1 mostre na tebela, faça um botao 
-escrito cadastrar promocao, que quando clica nele abre outra lista com todos os itens que tem 0 na promocao separados com botoes de categorias e todos igual no codigo de cima, e inves de ser remover e editar, 
-vai ser um botao escrito fazer promocao, apos clicar no botao, ele muda no banco de dados do item de 0 para 1 e peca o novo valor que nao pode ser maior que o antigo, apos colocar o valor
-ira salvar no banco de dados no lugar do valor, e salve o antigo no 'valor_promocao'.       na outra lista que sao os ativos na promocao, tenha o botao em cada de desativar a promocao e de editar,
-o de desativar ele muda a promocao de 1 para 0 e altere o 'valor_promocao' para 'valor' e zere o 'valor_promocao', ja o editar ele vai abrir para editar o valor e altere no sql 'valor'

@@ -7,6 +7,7 @@ if (isset($_POST['edit_item'], $_POST['novo_nome'], $_POST['novo_valor'], $_POST
     $novoNome = $_POST['novo_nome'];
     $novoValor = $_POST['novo_valor'];
     $novaDescricao = $_POST['nova_descricao'];
+    $novoCategoria = $_POST['novo_categoria'];
     $novoStatus = $_POST['novo_status'];
 
     if (isset($_FILES['nova_foto']) && $_FILES['nova_foto']['error'] == 0) {
@@ -24,7 +25,7 @@ if (isset($_POST['edit_item'], $_POST['novo_nome'], $_POST['novo_valor'], $_POST
         $conn->query($sqlUpdateFoto);
     }
 
-    $sql = "UPDATE item SET nome = '$novoNome', valor = '$novoValor', descricao = '$novaDescricao', status_item = '$novoStatus' WHERE item_id = $itemId";
+    $sql = "UPDATE item SET nome = '$novoNome', valor = '$novoValor', descricao = '$novaDescricao', categoria_id = '$novoCategoria', status_item = '$novoStatus' WHERE item_id = $itemId";
 
     if ($conn->query($sql) === TRUE) {
         echo "Item atualizado com sucesso!";

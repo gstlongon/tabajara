@@ -66,27 +66,35 @@ class Index {
     }else{
         categoria = categoria
     }
-        console.log(categoria);
         const response = await fetch(`itens.php?categoria_nome=${categoria}`);
         const fetchedItems = await response.json();
         const itemsContainer = document.querySelector('.index__item-area');
         itemsContainer.innerHTML = ''; 
     
         fetchedItems.forEach((item, index) => {
+            if (item.promocao === '1') {
+                item.valorAntigo = `R$ ${item.valor}`;
+            } else {
+                item.valor2 = `R$ ${item.valor}`;
+            }
+        
             let itemElement = document.createElement('div');
             itemElement.classList.add('col-xl-3', 'col-lg-4', 'col-md-6', 'col-xs-12');
+        
+            // Verifica se há valor antigo para exibir riscado
+            let priceHTML = item.valorAntigo
+                ? `<div class="index__item--price"><del>R$ ${item.valor_promocao}</del> Por R$${item.valor}</div>`
+                : `<div class="index__item--price">R$${item.valor}</div>`;
+        
             itemElement.innerHTML = `
                 <div class="index__item">
                     <div class="index__item--img"><img src="img2/${item.foto}" alt=""></div>
-                    <div class="index__item--price">R$ ${item.valor}</div>
+                    ${priceHTML}
                     <div class="index__item--name">${item.nome}</div>
                     <div class="index__item--desc">${item.descricao}</div>
                     <div class="index__sale"><img src="img/promotion.png" alt=""></div>
-
                     <button class="index__item--add">Adicionar</button>
                 </div>
-                
-
             `;
     
             itemsContainer.appendChild(itemElement);
@@ -99,8 +107,6 @@ class Index {
                 cartButton.classList.toggle('animate');
                 this.addToArray(item);
                 this.addToCart(item);
-                console.log(this.cartItems);
-                console.log(this.cartItems.length);
             });
     
             if (item.promocao === '1') {
@@ -115,7 +121,6 @@ class Index {
         buttons.forEach(button => {
             button.addEventListener('click', () => {
                 const categoria = button.getAttribute('data-categoria');
-                console.log(categoria);
                 this.displayItems(categoria);
             });
 
@@ -154,7 +159,6 @@ class Index {
             cartItems.appendChild(cartItem);
     
             const itemPrice = parseFloat(item.valor);
-            console.log('preco:', itemPrice);
             newTotal += itemPrice; 
     
             const removeItemButton = cartItem.querySelector('.card__trash');
@@ -282,7 +286,6 @@ class Index {
             backBtn.classList.remove('active')
 
 
-            console.log('observando',this.cartItems)
         });
         clearCartButton.addEventListener('click', () => {
             form.style.display = 'none'
@@ -292,7 +295,6 @@ class Index {
             backBtn.classList.remove('active')
 
             this.clearCart()
-            console.log('observando',this.cartItems);
         })
 
         avanceBtn.addEventListener('click', () => {
@@ -395,9 +397,6 @@ class Index {
         this.countCart()
         this.filterItems();
         this.startCounterAnimation()
-        console.log(this.cartItems)
-        console.log('hello')
-
     }
 
 }

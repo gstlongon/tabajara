@@ -308,6 +308,7 @@ ul {
 .index__item {
     width: 100%;
     height: auto;
+    min-height: 290px;
     margin: 0 0 30px;
     padding: 20px;
     background-color: #FFF;
@@ -864,6 +865,33 @@ ul {
     top: 30px;
 }
 
+.promocao-indicador {
+    background-color: rgb(243, 41, 41); 
+    color: white; 
+    padding: 8px 8px; 
+    border-radius: 5px; 
+    position: absolute; 
+    top: 0%;
+    right: 0; 
+} 
+
+.admin__promocao-btn {
+    margin-left: 20px;
+}
+.admin__promocao-btn {
+    background-color: #121e46;
+    color: #fff;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admin__promocao-btn:hover {
+    background-color: #4424;
+}
+
 .admin__delete-btn {
     background-color: #ff4d4d;
     color: #fff;
@@ -879,10 +907,10 @@ ul {
 }
 
 .admin__search-btn {
-    background-color: #00008b;
-    color: #fff;
+    background-color: #20b2aa;
+    color: #000;
     border: none;
-    padding: 3px 6px;
+    padding: 5px 10px;
     border-radius: 3px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -894,7 +922,7 @@ ul {
 
 .admin__searcha-btn {
     background-color: #20b2aa;
-    color: #000;
+    color: #ffffff;
     border: none;
     padding: 7px 12px;
     border-radius: 3px;
@@ -985,6 +1013,7 @@ ul {
 .admin__delete-btn {
     margin-right: 20px;
 }
+
 
 .admin__add-item {
     width: 100%;

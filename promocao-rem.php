@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['promocao'])) {
 
     if ($conn->query($sql) === TRUE) {
         header("Location: administrador-painel.php");
-        atualizarpromocao();
+        atualizaritens();
     } else {
         echo "Erro ao atualizar item: " . $conn->error;
     }
